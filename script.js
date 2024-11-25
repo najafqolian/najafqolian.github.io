@@ -47,3 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
         moveCarousel(1);
     }, 5000); // Change every 5 seconds
 });
+// Get the buttons and module
+const showModuleBtns = document.querySelectorAll(".show-module-btn");
+const infoModule = document.getElementById("infoModule");
+const closeModuleBtn = document.getElementById("closeModuleBtn");
+
+// Add event listeners to each button to show the module
+showModuleBtns.forEach((button) => {
+    button.addEventListener("click", () => {
+        infoModule.style.display = "block";
+    });
+});
+
+// When the "Close" button is clicked, hide the module
+closeModuleBtn.addEventListener("click", () => {
+    infoModule.style.display = "none";
+});
+
