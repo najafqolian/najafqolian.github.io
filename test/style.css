@@ -1,0 +1,175 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: bold;
+}
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+header p {
+    margin: 10px 0;
+    font-size: 1.4em;
+}
+
+header a {
+    color: white;
+    background: #0056b3;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+header a:hover {
+    background: #003d7a;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main {
+    padding: 20px;
+}
+
+.about {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.about p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.projects, .publications {
+    padding: 30px;
+    max-width: 900px;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects h2, .publications h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.project-list, .publication-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project, .publication {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover, .publication:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project h3, .publication strong {
+    margin: 0 0 10px;
+    font-size: 1.4em;
+    color: #007bff;
+}
+
+.project a, .publication a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project a:hover, .publication a:hover {
+    background-color: #0056b3;
+}
+
+.toggle-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.project-list, .publication-list {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.project-list {
+    max-height: 400px; /* Initial height for projects */
+}
+
+.publication-list {
+    max-height: 400px; /* Initial height for publications */
+}

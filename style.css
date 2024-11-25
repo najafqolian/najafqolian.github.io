@@ -1,0 +1,306 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+header a {
+    color: white;
+    background: #0056b3;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+header a:hover {
+    background: #003d7a;
+}
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.about {
+    width: 60%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.about p {
+    font-size: 1em;
+    text-align: justify;
+    margin-bottom: 20px;
+    margin-left: 120px;
+    margin-right: 120px;
+}
+
+.btn {
+    color: white;
+    background: #0056b3;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #003d7a;
+}
+
+.projects, .publications {
+    padding: 30px;
+    max-width: 1200px;
+    text-align: center;
+    margin: 30px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects h2, .publications h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.project-list, .publication-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+.publication-list{
+    text-align: justify;
+}
+.publication-list li {
+    margin: 15px;
+}
+.project, .publication {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover, .publication:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project h3, .publication strong {
+    margin: 0 0 10px;
+    font-size: 1.4em;
+    color: #007bff;
+}
+
+.project a, .publication a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.project a:hover, .publication a:hover {
+    background-color: #0056b3;
+}
+
+.toggle-btn {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.project-list, .publication-list {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.project-list {
+    max-height: 400px; /* Initial height for projects */
+}
+
+.publication-list {
+    max-height: 400px; /* Initial height for publications */
+}
+/* Project Card Styling */
+.project-card {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.project-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.project-card .project-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.project-card h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.project-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    margin: 20px auto;
+    display: inline-block;
+}
+
+.project-card ul li {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.project-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.btn.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn.back-btn:hover {
+    background-color: #0056b3;
+}
+/* Thumbnail Styling for Project Previews */
+.project-thumb {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-bottom: 10px;
+}
+/* Carousel Container */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel Images */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: auto;
+}
+
+/* Carousel Controls */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1;
+    user-select: none;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
