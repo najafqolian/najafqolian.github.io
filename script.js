@@ -1,3 +1,24 @@
+function toggleMenu() {
+    const navbarList = document.querySelector('.navbar-list');
+    navbarList.classList.toggle('active');
+}
+
+document.addEventListener('click', (event) => {
+    const navbar = document.querySelector('.navbar');
+    const navbarList = document.querySelector('.navbar-list');
+    const isClickInside = navbar.contains(event.target);
+
+    if (!isClickInside && navbarList.classList.contains('active')) {
+        navbarList.classList.remove('active');
+    }
+});
+function toggleAboutText() {
+    const aboutText = document.querySelector('.about-text');
+    const toggleBtn = document.querySelector('.toggle-btn2');
+
+    aboutText.classList.toggle('active');
+    toggleBtn.classList.toggle('active');
+}
 document.addEventListener("DOMContentLoaded", () => {
     const projectSection = document.querySelector(".project-list");
     const publicationSection = document.querySelector(".publication-list");

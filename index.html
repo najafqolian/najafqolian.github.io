@@ -8,14 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body id="home">
-        <nav class="navbar">
-            <ul class="navbar-list">
-                <li onclick="scrollToTop()"><a href="#" class="navbar-link">Home</a></li>
-                <li><a href="#honors-awards" class="navbar-link">Honors & Awards</a></li>
-                <li><a href="#projects" class="navbar-link">Projects</a></li>
-                <li><a href="#publications" class="navbar-link">Publications</a></li>
-            </ul>
-        </nav>
+<nav class="navbar">
+    <div class="navbar-container">
+        <button class="hamburger" onclick="toggleMenu()">
+            ☰
+        </button>
+        <ul class="navbar-list">
+            <li onclick="scrollToTop()"><a href="#" class="navbar-link">Home</a></li>
+            <li><a href="#honors-awards" class="navbar-link">Honors & Awards</a></li>
+            <li><a href="#projects" class="navbar-link">Industrial Projects</a></li>
+            <li><a href="#ACAprojects" class="navbar-link">Academic Projects</a></li>
+            <li><a href="#Certificates" class="navbar-link">Certificates</a></li>
+            <li><a href="#publications" class="navbar-link">Publications</a></li>
+        </ul>
+    </div>
+</nav>
+
     <header>
         <div class="container">
             <img src="assets/myphoto.jpg" alt="Mohamad Amin Najafqolian">
@@ -26,7 +34,7 @@
         </div>
         <section class="about">
             <h2>About Me</h2>
-            <p>
+            <p class="about-text">
                 Welcome to my personal website! I am an engineer, researcher, and innovator with expertise in robotics, mechatronics,
                 and advanced control systems. With a Master’s degree in Mechatronics from the University of Tehran and a proven track
                 record in cutting-edge research, I specialize in developing intelligent solutions for real-world challenges. My projects
@@ -34,14 +42,135 @@
                 design. As a leader in both academia and industry, I am driven by curiosity, creativity, and a passion for technology’s
                 transformative power. Explore my portfolio to discover more about my work and vision!
             </p>
+            <button class="toggle-btn2 btn" onclick="toggleAboutText()">▼</button>
             <a href="cv.pdf" target="_blank" class="btn">Download My CV</a>
         </section>
     </header>
   
     <main>
-
         <section class="projects" id="projects">
-            <h2>Projects</h2>
+            <h2>Industrial Projects</h2>
+            <div class="project-list">
+                <div class="project">
+                    <img src="assets/predictive-maintenance.jpg" alt="Predictive Maintenance System" class="project-thumb">
+                    <h3>Predictive Maintenance System</h3>
+                    <a href="projects/predictive-maintenance.html">View Details</a>
+                </div>
+                <div class="project">
+                    <img src="assets/ax2.png" alt="Reuleo Smart Suitcase" class="project-thumb">
+                    <h3>Reuleo Smart Suitcase</h3>
+                    <a href="projects/reuleo-smart-suitcase.html">View Details</a>
+                </div>
+                <div class="project">
+                    <img src="assets/inspection.png" alt="Smart Vision Inspection System" class="project-thumb">
+                    <h3>Smart Vision Inspection System</h3>
+                    <!-- <a href="projects/smart-vision-inspection.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <img src="assets/olive.png" alt="Olive Smart Suitcase" class="project-thumb">
+                    <h3>Olive Smart Suitcase</h3>
+                    <!-- <a href="projects/olive-smart-suitcase.html" class="show-module-btn">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <img src="assets/pelcatic.png" alt="Pelcatic Innovative Multi-Purpose Tracker" class="project-thumb">
+                    <h3>Pelcatic Innovative Multi-Purpose Tracker</h3>
+                    <!-- <a href="projects/pelcatic-tracker.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <img src="assets/reader.png" alt="Livestock Management System" class="project-thumb">
+                    <h3>Livestock Management System</h3>
+                    <!-- <a href="projects/livestock-management.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Fleet Management System</h3>
+                    <!-- <a href="projects/fleet-management.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Inventory Management System</h3>
+                    <!-- <a href="projects/inventory-management.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Arm Robots</h3>
+                    <!-- <a href="projects/arm-robots.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Human Safety System</h3>
+                    <!-- <a href="projects/human-safety-system.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Rescue Robots</h3>
+                    <!-- <a href="projects/rescue-robots.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Swarm Robots</h3>
+                    <!-- <a href="projects/swarm-robots.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Capsule Endoscopy System</h3>
+                    <!-- <a href="projects/capsule-endoscopy.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Industrial Automation Project</h3>
+                    <!-- <a href="projects/industrial-automation.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Mobile Soft Robot</h3>
+                    <!-- <a href="projects/mobile-soft-robot.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Vision-Based Quality Control System</h3>
+                    <!-- <a href="projects/vision-quality-control.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Smart Thin Card</h3>
+                    <!-- <a href="projects/smart-thin-card.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Robotics for Inventory Management</h3>
+                    <!-- <a href="projects/robotics-inventory-management.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>SSL Robots (RoboCup & IranOpen)</h3>
+                    <!-- <a href="projects/ssl-robots.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3> Testing and Calibration System</h3>
+                    <!-- <a href="projects/calibration.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Skid Conveyor System</h3>
+                    <!-- <a href="projects/skid-conveyor.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+                <div class="project">
+                    <h3>Smart Faucet</h3>
+                    <!-- <a href="projects/smart-faucet.html">View Details</a> -->
+                    <a href="javascript:void(0)" class="show-module-btn">View Details</a>
+                </div>
+            </div>
+            <button id="toggle-projects" class="toggle-btn">Show More</button>
+        </section>
+
+        <section class="projects" id="ACAprojects">
+            <h2>Academic Projects</h2>
             <div class="project-list">
                 <div class="project">
 <img src="assets/predictive-maintenance.jpg" alt="Predictive Maintenance System" class="project-thumb">
@@ -259,6 +388,10 @@
             </div>
         </div>
         </section>
+        <section class="publications" id="Certificates">
+            <h2>Certificates</h2>
+            
+        </section>
         <div id="infoModule" class="info-module">
             <div class="info-module-content">
                 <i class="fas fa-info-circle show-module-ico"></i>
@@ -276,8 +409,20 @@
         </div>
         </main>
     <footer>
-        <p>&copy; 2024 Mohamad Amin Najafqolian</p>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.a.najafqolian@gmail.com">m.a.najafqolian@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
+                        href="tel:+989212919626">+989212919626</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2024 Mohamad Amin Najafqolian</p>
+        </div>
     </footer>
+
     <script src="script.js"></script>
     <script>
         function scrollToTop() {

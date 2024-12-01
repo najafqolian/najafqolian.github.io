@@ -11,10 +11,16 @@ body {
 
 header {
     background-color: #007bff;
-    color: white;
-    display: flex;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: white;
+        display: flex;
+        flex-direction: row;
+        /* Default: Place sections side by side */
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        gap: 20px;
+        /* Space between the two sections */
 }
 
 header h1 {
@@ -44,6 +50,59 @@ header a {
 
 header a:hover {
     background: #003d7a;
+}
+.about .about-text {
+    display: block;
+    /* Default is visible */
+    overflow: hidden;
+    max-height: none;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.toggle-btn2 {
+    display: none;
+    background: transparent;
+    color: #007bff;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn2.active {
+    transform: rotate(180deg);
+}
+
+@media screen and (max-width: 1050px) {
+.about .about-text {
+        max-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    .about .about-text.active {
+        max-height: 1000px;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .toggle-btn2 {
+        display: inline-block;
+    }
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header .container,
+    header .about {
+        width: 100%;
+        /* Ensure sections span the full width */
+        margin-bottom: 20px;
+        /* Add spacing between sections */
+    }
 }
 
 .container {
@@ -168,12 +227,78 @@ main {
 }
 
 footer {
-    text-align: center;
-    padding: 10px;
     background-color: #333;
     color: white;
-    margin-top: 20px;
+    padding: 20px;
     font-size: 0.9em;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact {
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.8;
+}
+
+.contact p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.contact i {
+    color: #007bff;
+    margin-right: 10px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.contact a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover,
+.contact i:hover {
+    color: #0056b3;
+}
+.contact .label {
+    font-weight: bold;
+    margin-right: 5px;
+    /* Adds space between the label and the value */
+}
+
+.contact p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    gap: 10px;
+    /* Adds space between the icon and the text */
+}
+
+.contact a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover {
+    color: #0056b3;
+}
+
+footer .copyright {
+    text-align: center;
+    font-size: 0.9em;
+    margin-left: auto;
 }
 .project-list, .publication-list {
     overflow: hidden;
@@ -379,7 +504,7 @@ footer {
 }
 
 .navbar-list li {
-    margin: 0 15px;
+    margin: 10px 15px;
 }
 
 .navbar-link {
@@ -393,7 +518,7 @@ footer {
 }
 
 .navbar-link:hover {
-    background-color: #0056b3;
+    background-color: #beddff;
     /* Darker blue on hover */
 }
 body {
@@ -529,4 +654,55 @@ body {
 
 .close-module-btn:hover {
     background-color: #e60000;
+}
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: white;
+}
+
+@media screen and (max-width: 1120px) {
+    .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            justify-content: left;
+        }
+    .navbar-list {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        /* Centers the menu items */
+        background-color: #ffffffea;
+        position: absolute;
+        top: 60px;
+        /* Adjust for navbar height */
+        width: 100vw;
+        /* Centers the menu */
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: auto;
+        /* Adjust the width as needed */
+    }
+    .navbar-link{
+        color: #007bff;
+    }
+    .navbar-list.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }
