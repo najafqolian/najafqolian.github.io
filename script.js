@@ -101,15 +101,10 @@ function closeModal() {
 }
 async function fetchVisitorData() {
     try {
-        console.log('Fetching visitor data...');
-        const response = await fetch('https://ipapi.co/json/'); // Geolocation API
+        const response = await fetch('https://ipapi.co/json/');
         const data = await response.json();
 
-        console.log('Visitor data received:', data);
-
-        // Send this data to Google Apps Script
-        console.log('Sending visitor info to Google Apps Script...');
-        const result = await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', { // Replace YOUR_SCRIPT_ID
+        const result = await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,7 +114,7 @@ async function fetchVisitorData() {
 
         if (result.ok) {
             const responseData = await result.json();
-            console.log('Response from Google Apps Script:', responseData);
+            console.log('Response from Apps Script:', responseData);
         } else {
             console.error('Failed to send data. Status:', result.status, result.statusText);
         }
