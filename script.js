@@ -85,3 +85,17 @@ closeModuleBtn.addEventListener("click", () => {
     infoModule.style.display = "none";
 });
 
+function openModal(imageSrc, title, description) {
+    const modal = document.getElementById('certificateModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+
+    modal.style.display = 'flex';
+    modalImg.src = imageSrc;
+    modalCaption.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+}
+
+function closeModal() {
+    const modal = document.getElementById('certificateModal');
+    modal.style.display = 'none';
+}
