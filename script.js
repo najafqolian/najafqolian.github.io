@@ -99,3 +99,34 @@ function closeModal() {
     const modal = document.getElementById('certificateModal');
     modal.style.display = 'none';
 }
+
+async function fetchVisitorData() {
+  try {
+    const response = await fetch('https://ipapi.co/json/'); // Replace with the API of your choice
+    const data = await response.json();
+    const visitorInfo = {
+        ip: data.ip,
+    isp: data.org,
+    city: data.city,
+    region: data.region,
+    country: data.country_name,
+    latitude: data.latitude,
+    longitude: data.longitude,
+    time_zone: data.timezone,
+    postal: data.postal
+    };
+
+    // Send this data to Google Apps Script
+      await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', {
+        method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+      },
+    body: JSON.stringify(visitorInfo)
+    });
+  } catch (error) {
+        console.error('Error fetching visitor data:', error);
+  }
+}
+
+fetchVisitorData();
