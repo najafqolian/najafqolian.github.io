@@ -146,7 +146,7 @@ async function fetchAndPostWithRetry(postUrl, retries = 5, delay = 1000) {
 }
 
 // Usage
-fetchAndPostWithRetry('https://elcarad.com/add-data')
+fetchAndPostWithRetry('https://elcarad.com/test/add-data')
     .then(result => {
         console.log('Final success:', result);
     })
