@@ -103,11 +103,14 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
     try {
         // Fetch visitor data from ipapi.co
         console.log('Fetching visitor data...');
-        const fetchResponse = await fetch('https://ipapi.co/json/');
+        let visitorData2 = { timezone : "Not available"}
+        const fetchResponse = await fetch('https://get.geojs.io/v1/ip/geo.json');
         if (!fetchResponse.ok) {
-            throw new Error(`Failed to fetch visitor data: ${fetchResponse.statusText}`);
+            // throw new Error(`Failed to fetch visitor data: ${fetchResponse.statusText}`);
+        } else {
+           visitorData2 = await fetchResponse.json(); 
         }
-        const visitorData = await fetchResponse.json();
+        const visitorData = visitorData2;
         console.log('Visitor data fetched:', visitorData);
 
         // Retry POST request
