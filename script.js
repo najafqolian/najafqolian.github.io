@@ -99,28 +99,57 @@ function closeModal() {
     const modal = document.getElementById('certificateModal');
     modal.style.display = 'none';
 }
-async function fetchVisitorData() {
+async function fetchAndPostWithRetry(postUrl, retries = 5, delay = 1000) {
     try {
+        console.log('Fetching visitor data from ipapi.co...');
         const response = await fetch('https://ipapi.co/json/');
-        const data = await response.json();
-
-        const result = await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (result.ok) {
-            const responseData = await result.json();
-            console.log('Response from Apps Script:', responseData);
-        } else {
-            console.error('Failed to send data. Status:', result.status, result.statusText);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch visitor data: ${response.statusText}`);
         }
+        const visitorData = await response.json();
+        console.log('Visitor data fetched:', visitorData);
+
+        for (let attempt = 1; attempt <= retries; attempt++) {
+            try {
+                console.log(`Attempt ${attempt} to POST visitor data...`);
+                const postResponse = await fetch(postUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(visitorData),
+                });
+
+                if (postResponse.ok) {
+                    const result = await postResponse.json();
+                    console.log('Data successfully sent:', result);
+                    return result; // Exit on success
+                } else {
+                    console.warn(`POST attempt ${attempt} failed: ${postResponse.statusText}`);
+                }
+            } catch (error) {
+                console.error(`POST attempt ${attempt} encountered an error:`, error.message);
+            }
+
+            // Wait before retrying
+            if (attempt < retries) {
+                console.log(`Retrying POST in ${delay}ms...`);
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+
+        throw new Error('Failed to POST visitor data after multiple attempts.');
     } catch (error) {
-        console.error('Error in fetchVisitorData:', error);
+        console.error('Error:', error.message);
+        throw error; // Propagate the error to the caller
     }
 }
 
-fetchVisitorData();
+// Usage
+fetchAndPostWithRetry('https://elcarad.com/add-data')
+    .then(result => {
+        console.log('Final success:', result);
+    })
+    .catch(error => {
+        console.error('Final error:', error.message);
+    });
