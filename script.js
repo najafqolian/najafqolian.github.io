@@ -101,32 +101,33 @@ function closeModal() {
 }
 
 async function fetchVisitorData() {
-  try {
-    const response = await fetch('https://ipapi.co/json/'); // Replace with the API of your choice
-    const data = await response.json();
-    const visitorInfo = {
-        ip: data.ip,
-    isp: data.org,
-    city: data.city,
-    region: data.region,
-    country: data.country_name,
-    latitude: data.latitude,
-    longitude: data.longitude,
-    time_zone: data.timezone,
-    postal: data.postal
-    };
+    try {
+        console.log('Fetching visitor data...');
+        const response = await fetch('https://ipapi.co/json/'); // Replace with your preferred geolocation API
+        const data = await response.json();
 
-    // Send this data to Google Apps Script
-      await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', {
-        method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-      },
-    body: JSON.stringify(visitorInfo)
-    });
-  } catch (error) {
-        console.error('Error fetching visitor data:', error);
-  }
+        console.log('Visitor data received:', data);
+
+        // Send this data to Google Apps Script
+        console.log('Sending visitor info to Google Apps Script...');
+        const result = await fetch('https://script.google.com/macros/s/AKfycbwvB9E3168ZqOIF5bbjyDWNLWumgVqIt-PB-JCPfXUSZaq_C-xQQlOQ_bdy7diU6hJgNQ/exec', { // Replace YOUR_SCRIPT_ID
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (result.ok) {
+            const responseData = await result.json();
+            console.log('Response from Google Apps Script:', responseData);
+        } else {
+            console.error('Failed to send data. Status:', result.status, result.statusText);
+        }
+    } catch (error) {
+        console.error('Error in fetchVisitorData:', error);
+    }
 }
 
 fetchVisitorData();
+
