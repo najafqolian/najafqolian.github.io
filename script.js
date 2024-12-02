@@ -99,11 +99,10 @@ function closeModal() {
     const modal = document.getElementById('certificateModal');
     modal.style.display = 'none';
 }
-
 async function fetchVisitorData() {
     try {
         console.log('Fetching visitor data...');
-        const response = await fetch('https://ipapi.co/json/'); // Replace with your preferred geolocation API
+        const response = await fetch('https://ipapi.co/json/'); // Geolocation API
         const data = await response.json();
 
         console.log('Visitor data received:', data);
@@ -130,4 +129,3 @@ async function fetchVisitorData() {
 }
 
 fetchVisitorData();
-
