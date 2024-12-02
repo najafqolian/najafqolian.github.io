@@ -534,7 +534,8 @@ footer .copyright {
 }
 
 .navbar-link:hover {
-    background-color: #beddff;
+    background-color: #0056b3;
+    /* background-color: #beddff; */
     /* Darker blue on hover */
 }
 body {
@@ -688,6 +689,11 @@ body {
 }
 
 @media screen and (max-width: 1120px) {
+    .navbar-link:hover {
+            /* background-color: #0056b3; */
+            background-color: #beddff;
+            /* Darker blue on hover */
+        }
     .navbar-container {
             display: flex;
             justify-content: space-between;
