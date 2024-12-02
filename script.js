@@ -99,16 +99,18 @@ function closeModal() {
     const modal = document.getElementById('certificateModal');
     modal.style.display = 'none';
 }
-async function fetchAndPostWithRetry(postUrl, retries = 5, delay = 1000) {
+async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
     try {
-        console.log('Fetching visitor data from ipapi.co...');
-        const response = await fetch('https://ipapi.co/json/');
-        if (!response.ok) {
-            throw new Error(`Failed to fetch visitor data: ${response.statusText}`);
+        // Fetch visitor data from ipapi.co
+        console.log('Fetching visitor data...');
+        const fetchResponse = await fetch('https://ipapi.co/json/');
+        if (!fetchResponse.ok) {
+            throw new Error(`Failed to fetch visitor data: ${fetchResponse.statusText}`);
         }
-        const visitorData = await response.json();
+        const visitorData = await fetchResponse.json();
         console.log('Visitor data fetched:', visitorData);
 
+        // Retry POST request
         for (let attempt = 1; attempt <= retries; attempt++) {
             try {
                 console.log(`Attempt ${attempt} to POST visitor data...`);
@@ -120,15 +122,19 @@ async function fetchAndPostWithRetry(postUrl, retries = 5, delay = 1000) {
                     body: JSON.stringify(visitorData),
                 });
 
+                // Debug response status
+                console.log(`POST Response Status: ${postResponse.status}`);
+
                 if (postResponse.ok) {
                     const result = await postResponse.json();
                     console.log('Data successfully sent:', result);
                     return result; // Exit on success
                 } else {
-                    console.warn(`POST attempt ${attempt} failed: ${postResponse.statusText}`);
+                    const errorText = await postResponse.text();
+                    console.warn(`POST attempt ${attempt} failed. Status: ${postResponse.status}. Response: ${errorText}`);
                 }
-            } catch (error) {
-                console.error(`POST attempt ${attempt} encountered an error:`, error.message);
+            } catch (postError) {
+                console.error(`POST attempt ${attempt} encountered an error:`, postError.message);
             }
 
             // Wait before retrying
@@ -146,7 +152,7 @@ async function fetchAndPostWithRetry(postUrl, retries = 5, delay = 1000) {
 }
 
 // Usage
-fetchAndPostWithRetry('https://elcarad.com/test/add-data')
+fetchVisitorDataAndPost('https://elcarad.com/test/add-data')
     .then(result => {
         console.log('Final success:', result);
     })
