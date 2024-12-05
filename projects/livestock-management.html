@@ -1,37 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livestock Management System - Mohamad Amin Najafqolian</title>
+    <title>Livestock Management System</title>
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=17tFiVI-pJa8LQxJ0Ia02ylkajgfDbmTQ&sz=w64"
+        type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        ul {
+            margin: 2.5% 0;
+            font-size: calc(0.8vw + 0.1rem);
+        }
+
+        span {
+            margin: 0.9% 0;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 5%;
+            text-align: justify;
+            line-height: 1.8;
+
+        }
+
+        li::marker {
+            color: #007bff;
+        }
+
+        .project-card ul li {
+            margin: 5% 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 90%;
+            /* Full width minus 5% margin on each side */
+            max-width: 1280px;
+            /* Limit to the original video width */
+            margin: 0 auto;
+            /* Center the video horizontally */
+            /* No padding for unnecessary space */
+            aspect-ratio: 16 / 9;
+            /* Use the natural video aspect ratio */
+        }
+
+        /* Iframe to fill the container */
+        iframe {
+            width: 100%;
+            /* Responsive width */
+            height: 100%;
+            /* Full height, no black bars */
+            border: none;
+            /* No border for a cleaner look */
+        }
+    </style>
 </head>
-<body>
-    <header>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Mohamad Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
         <h1>Livestock Management System</h1>
     </header>
-
     <main>
-        <section class="project-details">
-            <img src="../assets/project2.jpg" alt="Livestock Management System">
-            
-            <h2>Project Overview</h2>
-            <p>
-                Designed a smart livestock management system using advanced tags to monitor health, location, and activity. The system enhances operational efficiency in agriculture, enabling real-time tracking and automated health alerts.
-            </p>
-            <h3>Key Features:</h3>
-            <ul>
-                <li>Smart tags for temperature, pH, and location monitoring.</li>
-                <li>Automatic estrus cycle detection for breeding optimization.</li>
-                <li>Customizable solutions for different livestock operations.</li>
-            </ul>
-        
-            <a href="../index.html" class="btn">Back to Projects</a>
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=16oGFH2sJ0SPY3P9q0C2AHIG3SnBOW0Pf&sz=w1500"
+                        alt="Livestock Management System" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=17tFiVI-pJa8LQxJ0Ia02ylkajgfDbmTQ&sz=w1500"
+                        alt="Livestock Management System" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=18yw00kVrEyE2scBJfGy-Nlo-wz3cMjUz&sz=w1500"
+                        alt="Livestock Management System" class="carousel-item">
+                </div>
+                <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The Livestock Management System is an innovative solution designed to transform the agriculture and husbandry
+                    sectors by integrating state-of-the-art technology for efficient and humane livestock monitoring and tracking.
+                    With a proven track record across 13 industry-specific projects, this system offers comprehensive monitoring
+                    capabilities tailored to the unique needs of livestock management. Deployed in major organizations, it enhances
+                    operational efficiency and animal welfare while maintaining flexibility for diverse applications.
+                </p>
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Key Features</h3>
+                <ul>
+                    <li><span class="highlight">Smart Gateway:</span> Monitors critical parameters such as weight, commuting, age,
+                        vaccination status, and breed for informed decision-making.</li>
+                    <li><span class="highlight">Advanced Tag Technology:</span> Features passive and active underskin or bolus tags
+                        capable of tracking ID, temperature, pH, location, and estrus cycles.</li>
+                    <li><span class="highlight">Durable Design:</span> Includes tags like Thermo-Motion Tags Plus with a 5m range
+                        and boluses with a 4-year battery life, ensuring longevity and reliability.</li>
+                    <li><span class="highlight">Comprehensive Monitoring:</span> Offers real-time tracking and health monitoring to
+                        optimize livestock management.</li>
+                    <li><span class="highlight">Versatility:</span> Designed for integration with existing systems for seamless
+                        deployment and scalability.</li>
+                </ul>
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Impact</h3>
+                <ul>
+                    <li><span class="highlight">Enhanced Operational Efficiency:</span> Streamlines livestock management processes,
+                        saving time and resources.</li>
+                    <li><span class="highlight">Improved Animal Welfare:</span> Enables proactive health monitoring and care, reducing
+                        stress and ensuring better living conditions.</li>
+                    <li><span class="highlight">Sustainability:</span> Supports long-term resource management with minimal waste and
+                        extended asset lifespan.</li>
+                    <li><span class="highlight">Cross-Industry Applications:</span> Successfully deployed in agriculture and husbandry
+                        sectors, highlighting its adaptability.</li>
+                    <li><span class="highlight">Data-Driven Insights:</span> Provides actionable insights for improved decision-making
+                        and productivity.</li>
+                </ul>
+
+            </div>
+            <!-- <section id="resources" class="resources-section">
+                <h2>Related Files & Links</h2>
+                <ul class="resources-list">
+                    <li><a href="../cv.pdf" target="_blank" class="resource-link">Download My CV</a></li>
+                    <li><a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" class="resource-link">Visit
+                            My LinkedIn</a></li>
+                    <li><a href="https://example.com/publication1" target="_blank" class="resource-link">Publication 1: Research
+                            Paper</a></li>
+                    <li><a href="https://example.com/project1" target="_blank" class="resource-link">Project 1: Predictive
+                            Maintenance System</a></li>
+                    <li><a href="https://example.com/project2" target="_blank" class="resource-link">Project 2: Reuleo Smart
+                            Suitcase</a></li>
+                </ul>
+            </section> -->
+            <h3>Product Demonstration</h3>
+            <div class="video-wrapper">
+                <iframe id="video-frame"
+                    src="https://drive.google.com/file/d/1mOtrmFFr_DKprfXVmT4otyIDNPh2StMB/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="https://drive.google.com/file/d/1yTXlU4da_1XBi2mHS1Ww71-ZFH20XwVz/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3>Application Demonstration</h3>
+            <div class="video-wrapper">
+                <iframe id="video-frame"
+                    src="https://drive.google.com/file/d/1w7bi7NzXXQqJ6XJdXzhLQWPIlLmxFVK5/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe id="video-frame" src="https://drive.google.com/file/d/1qfcSJ4fwxKTkHOhIVllSu_pweh6wd2Nh/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
         </section>
     </main>
-
     <footer>
-        <p>&copy; 2024 Mohamad Amin Najafqolian | All Rights Reserved</p>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.a.najafqolian@gmail.com">m.a.najafqolian@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
+                        href="tel:+989212919626">+989212919626</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2024 Mohamad Amin Najafqolian</p>
+        </div>
     </footer>
+    <script src="../script.js"></script>
+    <script>
+        function adjustIframeSize() {
+            const iframe = document.getElementById('video-frame');
+            iframe.onload = function () {
+                try {
+                    // Access the iframe's content to get the video
+                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    const video = iframeDocument.querySelector('video');
+                    if (video) {
+                        // Get video dimensions
+                        const videoWidth = video.videoWidth;
+                        const videoHeight = video.videoHeight;
+
+                        // Calculate aspect ratio and adjust iframe height
+                        const aspectRatio = videoHeight / videoWidth;
+                        iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                    }
+                } catch (e) {
+                    console.error("Unable to adjust iframe size dynamically:", e);
+                }
+            };
+        }
+
+        // Run on page load and resize
+        window.addEventListener('load', adjustIframeSize);
+        window.addEventListener('resize', adjustIframeSize);
+    </script>
 </body>
+
 </html>

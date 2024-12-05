@@ -21,11 +21,14 @@ function toggleAboutText() {
 }
 document.addEventListener("DOMContentLoaded", () => {
     const projectSection = document.querySelector(".project-list");
+    const projectSection2 = document.querySelector(".project-list2");
     const publicationSection = document.querySelector(".publication-list");
     const projectToggleBtn = document.getElementById("toggle-projects");
+    const projectToggleBtn2 = document.getElementById("toggle-projects2");
     const publicationToggleBtn = document.getElementById("toggle-publications");
 
     projectSection.style.maxHeight = "400px";
+    projectSection2.style.maxHeight = "400px";
     publicationSection.style.maxHeight = "400px";
 
     projectToggleBtn.addEventListener("click", () => {
@@ -33,7 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
         projectSection.style.maxHeight = isCollapsed ? "none" : "400px";
         projectToggleBtn.textContent = isCollapsed ? "Show Less" : "Show More";
     });
-
+    projectToggleBtn2.addEventListener("click", () => {
+        const isCollapsed = projectSection2.style.maxHeight === "400px";
+        projectSection2.style.maxHeight = isCollapsed ? "none" : "400px";
+        projectToggleBtn2.textContent = isCollapsed ? "Show Less" : "Show More";
+    });
     publicationToggleBtn.addEventListener("click", () => {
         const isCollapsed = publicationSection.style.maxHeight === "400px";
         publicationSection.style.maxHeight = isCollapsed ? "none" : "400px";

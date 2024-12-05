@@ -1,49 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuleo Smart Suitcase</title>
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=1gG_Boyb83bEPnxg406gzCaw5gSuUBYLM&sz=w64" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        ul {
+            margin: 2.5% 0;
+            font-size: calc(0.8vw + 0.1rem);
+        }
+
+        span {
+            margin: 0.9% 0;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 5%;
+            text-align: justify;
+            line-height: 1.8;
+
+        }
+
+        li::marker {
+            color: #007bff;
+        }
+
+        .project-card ul li {
+            margin: 5% 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 90%;
+            /* Full width minus 5% margin on each side */
+            max-width: 1280px;
+            /* Limit to the original video width */
+            margin: 0 auto;
+            /* Center the video horizontally */
+            /* No padding for unnecessary space */
+            aspect-ratio: 16 / 9;
+            /* Use the natural video aspect ratio */
+        }
+
+        /* Iframe to fill the container */
+        iframe {
+            width: 100%;
+            /* Responsive width */
+            height: 100%;
+            /* Full height, no black bars */
+            border: none;
+            /* No border for a cleaner look */
+        }
+    </style>
 </head>
-<body>
+
+<body style="margin-top: 0px;">
     <header class="project-header">
+        <div class="container">
+            <h1>Mohamad Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
         <h1>Reuleo Smart Suitcase</h1>
     </header>
     <main>
         <section class="project-card">
             <div class="carousel">
                 <div class="carousel-images">
-                    <img src="https://drive.google.com/thumbnail?id=1Jf62EKRQmLi1uspWFC8vkkVGFdvbTUec&sz=w1500" alt="Reuleo Smart Suitcase in Action" class="carousel-item">
-                    <img src="https://drive.google.com/thumbnail?id=1gG_Boyb83bEPnxg406gzCaw5gSuUBYLM&sz=w1500" alt="Reuleo Smart Suitcase Design" class="carousel-item">
-<img src="https://drive.google.com/thumbnail?id=1TNVB-4u_A9RDR0K5Di3DsOffwnzHcT7r&sz=w1500" alt="Reuleo Smart Suitcase Design" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1Jf62EKRQmLi1uspWFC8vkkVGFdvbTUec&sz=w1500"
+                        alt="Predictive Maintenance System" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1gG_Boyb83bEPnxg406gzCaw5gSuUBYLM&sz=w1500"
+                        alt="Predictive Maintenance System" class="carousel-item">
+                        <img src="https://drive.google.com/thumbnail?id=1TNVB-4u_A9RDR0K5Di3DsOffwnzHcT7r&sz=w1500"
+                            alt="Predictive Maintenance System" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1Gs17oUfw0wHEDKRFUEiSk1pvJnzEOaqt&sz=w1500"
+                        alt="Predictive Maintenance System" class="carousel-item">
+                        <img src="https://drive.google.com/thumbnail?id=1O72RvVnv_LFG_rBOYs0nyMTWwGCKEX0r&sz=w1500"
+                            alt="Predictive Maintenance System" class="carousel-item">
+                        <img src="https://drive.google.com/thumbnail?id=1U9HZTPtgLzoIdCei01U1XV3DMp3bb3DP&sz=w1500"
+                            alt="Predictive Maintenance System" class="carousel-item">
                 </div>
                 <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
                 <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
             </div>
-            <div class="project-content">
-                <h2>Overview</h2>
-                <p>
-                    The Reuleo Smart Suitcase is a revolutionary travel companion that combines advanced robotics 
-                    with modern technology. It is designed to enhance convenience and security for travelers, 
-                    offering innovative features to redefine the travel experience.
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The Reuleo Smart Suitcase is an innovative and user-centric mobility solution designed to transform the way people
+                    travel and manage their belongings. Developed with cutting-edge technology, it features advanced robotics,
+                    intelligent navigation, and versatile functionality, making it a leader in the smart suitcase market. The suitcase
+                    combines sleek design with practical usability, catering to both individual travelers and professionals. Its
+                    groundbreaking features have earned recognition at international competitions and among industry leaders.
                 </p>
-                <h3>Key Features</h3>
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Key Features</h3>
                 <ul>
-                    <li>Motorized omni-wheels for smooth navigation across any terrain.</li>
-                    <li>Smartphone connectivity for remote control and live tracking.</li>
-                    <li>GPS and 4G/5G-enabled for global tracking and seamless communication.</li>
-                    <li>Integrated charging ports for powering devices on the go.</li>
-                    <li>Anti-theft alarm system and secure locking mechanism.</li>
+                    <li><span class="highlight">Smart Mobility:</span> Equipped with motorized omni-wheels for smooth navigation across
+                        various terrains.</li>
+                    <li><span class="highlight">Autonomous Navigation:</span> Follows its owner using advanced 3D image processing and
+                        proximity sensors.</li>
+                    <li><span class="highlight">Versatile Design:</span> Can transform into a scooter for added functionality and
+                        convenience.</li>
+                    <li><span class="highlight">Enhanced Security:</span> Features alarm systems, automatic locking, GPS tracking, and
+                        3G/4G connectivity for global monitoring.</li>
+                    <li><span class="highlight">Integrated Features:</span> Includes automatic luggage weighing, a 10,000 mAh battery
+                        for device charging, and smartphone connectivity.</li>
+                    <li><span class="highlight">Companion App:</span> Provides seamless logistics management, control, and real-time
+                        updates.</li>
                 </ul>
-                <h3>Impact</h3>
-                <p>
-                    The Reuleo Smart Suitcase has transformed how people travel, providing greater mobility, 
-                    security, and convenience. Its state-of-the-art design ensures a stress-free travel 
-                    experience, empowering users to explore with confidence.
-                </p>
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Impact</h3>
+                <ul>
+                    <li><span class="highlight">Revolutionized Travel:</span> Enhances mobility and convenience for travelers by
+                        combining innovative technology with practical design.</li>
+                    <li><span class="highlight">Recognized Excellence:</span> Awarded top honors at Germany's Start Up World competition
+                        for innovation and usability.</li>
+                    <li><span class="highlight">Improved Security:</span> Reduces loss and theft risks through advanced tracking and
+                        alarm systems.</li>
+                    <li><span class="highlight">Eco-Friendly Travel:</span> Promotes sustainable travel solutions with smart power
+                        management and energy efficiency.</li>
+                    <li><span class="highlight">Broad Applicability:</span> Appeals to diverse user groups, from frequent travelers to
+                        professionals seeking advanced mobility solutions.</li>
+                </ul>
+
             </div>
-            <section id="resources" class="resources-section">
+            <!-- <section id="resources" class="resources-section">
                 <h2>Related Files & Links</h2>
                 <ul class="resources-list">
                     <li><a href="../cv.pdf" target="_blank" class="resource-link">Download My CV</a></li>
@@ -55,15 +146,61 @@
                             Maintenance System</a></li>
                     <li><a href="https://example.com/project2" target="_blank" class="resource-link">Project 2: Reuleo Smart
                             Suitcase</a></li>
-                    <!-- Add more links as needed -->
                 </ul>
-            </section>
+            </section> -->
+            <h3>Reuleo</h3>
+            <div class="video-wrapper">
+                <iframe id="video-frame"
+                    src="https://drive.google.com/file/d/1Uz14UDN33zpoqRE6y3IiOLCStF3-YR1E/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
             <a href="../index.html" class="btn back-btn">Back to Home</a>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Mohamad Amin Najafqolian | All Rights Reserved</p>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.a.najafqolian@gmail.com">m.a.najafqolian@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
+                        href="tel:+989212919626">+989212919626</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2024 Mohamad Amin Najafqolian</p>
+        </div>
     </footer>
     <script src="../script.js"></script>
+    <script>
+        function adjustIframeSize() {
+            const iframe = document.getElementById('video-frame');
+            iframe.onload = function () {
+                try {
+                    // Access the iframe's content to get the video
+                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    const video = iframeDocument.querySelector('video');
+                    if (video) {
+                        // Get video dimensions
+                        const videoWidth = video.videoWidth;
+                        const videoHeight = video.videoHeight;
+
+                        // Calculate aspect ratio and adjust iframe height
+                        const aspectRatio = videoHeight / videoWidth;
+                        iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                    }
+                } catch (e) {
+                    console.error("Unable to adjust iframe size dynamically:", e);
+                }
+            };
+        }
+
+        // Run on page load and resize
+        window.addEventListener('load', adjustIframeSize);
+        window.addEventListener('resize', adjustIframeSize);
+    </script>
 </body>
+
 </html>

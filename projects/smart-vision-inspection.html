@@ -1,37 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Vision Inspection System - Mohamad Amin Najafqolian</title>
+    <title>Smart Vision Inspection</title>
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=1NScPyg-MmagviZsuZIUzG_ZLE2b6u-YT&sz=w64"
+        type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <header>
-        <h1>Smart Vision Inspection System</h1>
-    </header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
 
+        ul {
+            margin: 2.5% 0;
+            font-size: calc(0.8vw + 0.1rem);
+        }
+
+        span {
+            margin: 0.9% 0;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 5%;
+            text-align: justify;
+            line-height: 1.8;
+
+        }
+
+        li::marker {
+            color: #007bff;
+        }
+
+        .project-card ul li {
+            margin: 5% 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 90%;
+            /* Full width minus 5% margin on each side */
+            max-width: 1280px;
+            /* Limit to the original video width */
+            margin: 0 auto;
+            /* Center the video horizontally */
+            /* No padding for unnecessary space */
+            aspect-ratio: 16 / 9;
+            /* Use the natural video aspect ratio */
+        }
+
+        /* Iframe to fill the container */
+        iframe {
+            width: 100%;
+            /* Responsive width */
+            height: 100%;
+            /* Full height, no black bars */
+            border: none;
+            /* No border for a cleaner look */
+        }
+    </style>
+</head>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Mohamad Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
+        <h1>Smart Vision Inspection</h1>
+    </header>
     <main>
-        <section class="project-details">
-            <img src="../assets/project3.jpg" alt="Smart Vision Inspection System">
-            
-            <h2>Project Overview</h2>
-            <p>
-                Built a Smart Vision Inspection System to automate quality control in production lines. Using computer vision, it detects defects in products with high accuracy, improving overall efficiency and reducing waste.
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=1NScPyg-MmagviZsuZIUzG_ZLE2b6u-YT&sz=w1500"
+                        alt="smart-vision-inspection" class="carousel-item">
+                        <img src="https://drive.google.com/thumbnail?id=1yfPBrDxQtqsMHKHiIPm7k09DolRzTMKZ&sz=w1500"
+                            alt="smart-vision-inspection" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1X39g9LxETPigeEsto_ZRAuAhfmftyq0Z&sz=w1500"
+                        alt="smart-vision-inspection" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1FxnRhNGZJ7lvKVnAVpVeAZ5_7zdlREmD&sz=w1500"
+                        alt="smart-vision-inspection" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1fh77Ai2RBPsoIz7byVvndX0mHAYrK3sL&sz=w1500"
+                        alt="smart-vision-inspection" class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1yfPBrDxQtqsMHKHiIPm7k09DolRzTMKZ&sz=w1500"
+                        alt="smart-vision-inspection" class="carousel-item">
+                </div>
+                <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+            <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+            <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                The Vision-Based Quality Control System is a state-of-the-art solution designed to enhance manufacturing quality
+                assurance by leveraging advanced computer vision technology. This system ensures real-time product quality analysis,
+                seamless integration into production workflows, and exceptional accuracy. Deployed across multiple production lines,
+                it has transformed quality control in diverse industries by combining robust hardware, intelligent software, and
+                user-friendly interfaces tailored to industry-specific needs.
             </p>
-            <h3>Key Features:</h3>
+            <h3 style="font-size: calc(0.9vw + 0.5rem);">Key Features</h3>
             <ul>
-                <li>Real-time defect detection using machine learning.</li>
-                <li>Integration with existing manufacturing workflows.</li>
-                <li>Customizable inspection parameters for various industries.</li>
+                <li><span class="highlight">Advanced Computer Vision:</span> Utilizes AI-driven classifiers for precise real-time
+                    defect detection and product evaluation.</li>
+                <li><span class="highlight">High Accuracy:</span> Detects deformations, holes, and failures with precision up to
+                    0.01 millimeters.</li>
+                <li><span class="highlight">Customizable Software:</span> Allows adjustment of detection parameters to cater to
+                    specific manufacturing needs.</li>
+                <li><span class="highlight">User-Friendly Interface:</span> Features a web-based application for intuitive control,
+                    monitoring, and reporting.</li>
+                <li><span class="highlight">Seamless Integration:</span> Easily integrates into existing production lines to
+                    minimize operational disruption.</li>
+                <li><span class="highlight">Scalable Design:</span> Adaptable to a wide range of industries and production scales.
+                </li>
             </ul>
-        
-            <a href="../index.html" class="btn">Back to Projects</a>
+            <h3 style="font-size: calc(0.9vw + 0.5rem);">Impact</h3>
+            <ul>
+                <li><span class="highlight">Enhanced Quality Assurance:</span> Improves defect detection accuracy, ensuring
+                    consistently high product standards.</li>
+                <li><span class="highlight">Operational Efficiency:</span> Reduces manual inspection efforts and accelerates
+                    production workflows.</li>
+                <li><span class="highlight">Cost Savings:</span> Minimizes waste and rework costs by detecting issues early in the
+                    production process.</li>
+                <li><span class="highlight">Increased Reliability:</span> Provides consistent and objective quality assessment,
+                    reducing human error.</li>
+                <li><span class="highlight">Cross-Industry Applications:</span> Successfully implemented in sectors such as
+                    manufacturing, automotive, and electronics.</li>
+            </ul>
+
+
+            </div>
+            <!-- <section id="resources" class="resources-section">
+                <h2>Related Files & Links</h2>
+                <ul class="resources-list">
+                    <li><a href="../cv.pdf" target="_blank" class="resource-link">Download My CV</a></li>
+                    <li><a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" class="resource-link">Visit
+                            My LinkedIn</a></li>
+                    <li><a href="https://example.com/publication1" target="_blank" class="resource-link">Publication 1: Research
+                            Paper</a></li>
+                    <li><a href="https://example.com/project1" target="_blank" class="resource-link">Project 1: Predictive
+                            Maintenance System</a></li>
+                    <li><a href="https://example.com/project2" target="_blank" class="resource-link">Project 2: Reuleo Smart
+                            Suitcase</a></li>
+                </ul>
+            </section> -->
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
         </section>
     </main>
-
     <footer>
-        <p>&copy; 2024 Mohamad Amin Najafqolian | All Rights Reserved</p>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.a.najafqolian@gmail.com">m.a.najafqolian@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
+                        href="tel:+989212919626">+989212919626</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2024 Mohamad Amin Najafqolian</p>
+        </div>
     </footer>
+    <script src="../script.js"></script>
 </body>
+
 </html>

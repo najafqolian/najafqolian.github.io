@@ -73,7 +73,9 @@ header a:hover {
 .toggle-btn2.active {
     transform: rotate(180deg);
 }
-
+.project-header{
+    flex-direction: column;
+}
 @media screen and (max-width: 1050px) {
 .about .about-text {
         max-height: 0;
@@ -163,13 +165,13 @@ main {
     margin-bottom: 20px;
 }
 
-.project-list, .publication-list {
+.project-list,.project-list2, .publication-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
 }
 @media screen and (max-width: 500px) {
-    .project-list, .publication-list {
+    .project-list,.project-list2, .publication-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     gap: 20px;
@@ -316,12 +318,12 @@ footer .copyright {
     font-size: 0.9em;
     margin-left: auto;
 }
-.project-list, .publication-list {
+.project-list,.project-list2, .publication-list {
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
 }
 
-.project-list {
+.project-list, .project-list2 {
     max-height: 400px; /* Initial height for projects */
 }
 
@@ -330,7 +332,7 @@ footer .copyright {
 }
 /* Project Card Styling */
 .project-card {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px;
     background: white;
