@@ -58,13 +58,13 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
 }
 
 // Usage
-fetchVisitorDataAndPost('https://elcarad.com/test/add-data')
-    .then(result => {
-        console.log('Final success:', result);
-    })
-    .catch(error => {
-        console.error('Final error:', error.message);
-    });
+// fetchVisitorDataAndPost('https://elcarad.com/test/add-data')
+//     .then(result => {
+//         console.log('Final success:', result);
+//     })
+//     .catch(error => {
+//         console.error('Final error:', error.message);
+//     });
 
 function toggleMenu() {
     const navbarList = document.querySelector('.navbar-list');
