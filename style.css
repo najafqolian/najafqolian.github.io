@@ -820,3 +820,6 @@ body {
         text-decoration: none;
         cursor: pointer;
 }
+iframe {
+    border-radius: 15px;
+}

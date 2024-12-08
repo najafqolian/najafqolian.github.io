@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control</title>
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w64"
+        type="image/x-icon">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        ul {
+            margin: 2.5% 0;
+            font-size: calc(0.8vw + 0.1rem);
+        }
+
+        span {
+            margin: 0.9% 0;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 5%;
+            text-align: justify;
+            line-height: 1.8;
+
+        }
+
+        li::marker {
+            color: #007bff;
+        }
+
+        .project-card ul li {
+            margin: 5% 0;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 90%;
+            /* Full width minus 5% margin on each side */
+            max-width: 1280px;
+            /* Limit to the original video width */
+            margin: 0 auto;
+            /* Center the video horizontally */
+            /* No padding for unnecessary space */
+            aspect-ratio: 16 / 9;
+            /* Use the natural video aspect ratio */
+        }
+
+        /* Iframe to fill the container */
+        iframe {
+            border-radius: 15px;
+            width: 100%;
+            /* Responsive width */
+            height: 100%;
+            /* Full height, no black bars */
+            border: none;
+            /* No border for a cleaner look */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: calc(1vw + 0.1rem);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #007bff;
+        }
+
+        th,
+        td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        th {
+            text-align: center;
+            color: white;
+            border: 2px solid #0056b3;
+            background-color: #007bff;
+        }
+
+        /* Container to hold the image and magnifier tooltip */
+        .img-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Image styling */
+        .magnifier-img {
+            width: 100%;
+            /* Adjust to your desired size */
+            height: auto;
+            display: block;
+        }
+
+        /* Magnifier tooltip styling */
+        .magnifier-tooltip {
+            position: absolute;
+            display: none;
+            /* Hidden by default */
+            width: 12rem;
+            /* Adjust magnifier size */
+            height: 12rem;
+            border: 2px solid #000;
+            border-radius: 50%;
+            /* Circle shape */
+            overflow: hidden;
+            pointer-events: none;
+            /* Prevent pointer interference */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-repeat: no-repeat;
+            background-size: 300%;
+            /* Set zoom level */
+        }
+    </style>
+</head>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Mohamad Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
+        <h1>Learning-Based MPC</h1>
+    </header>
+    <main>
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=1UbRGK1P3FeXNRXO48en0X3yG8FTmwvm_&sz=w1500"
+                        alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1f3eAMet54KJ_ygorOXjulPfa27jwZc0d&sz=w1500"
+                        alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control"
+                        class="carousel-item">
+                        <img src="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w1500"
+                            alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control" class="carousel-item">
+                    
+                </div>
+                <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    My research has explored advanced control mechanisms for quadrotor and multi-robot systems, emphasizing
+                    model-free approaches and reinforcement learning to address nonlinear dynamics and under-actuation. The findings
+                    are detailed in two publications, highlighting the development of innovative methodologies for trajectory
+                    tracking and formation control.
+                </p>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    These contributions are encapsulated in the following peer-reviewed publications:
+                </p>
+            
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Publications</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Journal/Conference (peer-reviewed)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://doi.org/10.1016/j.isatra.2024.01.001" style="text-decoration: none;"
+                                    target="_blank">
+                                    <span class="highlight">Robot Trajectory Tracking using Combined Stochastic Model-Free Position
+                                        and DDPG-based Attitude Control</span></a>
+                            </td>
+                            <td>ISA Transactions</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" style="text-decoration: none;" target="_blank">
+                                    <span class="highlight">Formation Control of Multi-Robots Based on Deep Q-learning</span></a>
+                            </td>
+                            <td>10th RSI International Conference on Robotics and Mechatronics (ICRoM)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Abstracts</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Publication</th>
+                            <th>Abstract</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Robot Trajectory Tracking using Combined Stochastic Model-Free Position and DDPG-based Attitude
+                                Control</td>
+                            <td>
+                                This article presents a cascade controller for the quadrotor to track the desired trajectory
+                                effectively. Unlike previous approaches, this method avoids simplification and linearization
+                                assumptions, making it applicable in a wider range of scenarios. A novel linear quadratic tracking
+                                method is utilized, which takes into account both process noise and measurement noise while
+                                maintaining a model-free nature. Furthermore, the stability analysis of this stochastic method is
+                                thoroughly investigated. In terms of attitude control, a model-free approach is adopted. The Deep
+                                Deterministic Policy Gradient (DDPG) algorithm is implemented, leveraging an actor-critic network to
+                                handle the nonlinearities associated with attitude control. This model-free approach eliminates the
+                                need for an accurate model of the quadrotor’s dynamics. Simulations are conducted to evaluate the
+                                performance of the proposed controller, and the results demonstrate its ability to effectively
+                                control the quadrotor, ensuring accurate trajectory tracking and stability.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Formation Control of Multi-Robots Based on Deep Q-learning</td>
+                            <td>
+                                The purpose of this study is to address a model-free formation problem for a team of quadrotors. A
+                                cascade controller, including a tracking controller and an attitude controller, is developed. The
+                                assumptions preserve the nonlinearity and the under-actuation of the model. The tracking controller
+                                uses reinforcement learning to develop a model-free online controller. Moreover, the attitude
+                                controller is equipped with an actor-critic neural network to solve the nonlinearity issue. The
+                                whole formation leads with a virtual leader in the center of the predesigned formation. Simulation
+                                results of multi-aerial vehicles, including four heterogeneous quadrotors, demonstrate the
+                                effectiveness of the proposed controller.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Comparison</h3>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    Both publications advance the field of control strategies for quadrotors and multi-robot systems, addressing key
+                    challenges in dynamic and uncertain environments:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Stochastic Model-Free Position & DDPG-based Control</th>
+                            <th>Deep Q-learning Formation Control</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;">Core Design</td>
+                            <td>Utilizes a stochastic model-free position controller and DDPG-based attitude control to ensure
+                                trajectory tracking.</td>
+                            <td>Employs Deep Q-learning for online reinforcement learning to achieve model-free formation control.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">Strengths</td>
+                            <td>Handles process and measurement noise effectively, offering stability in noisy environments.</td>
+                            <td>Adapts dynamically to nonlinearities and under-actuation in formation scenarios.</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">Challenges</td>
+                            <td>Performance in highly nonlinear dynamics may require further refinement.</td>
+                            <td>Computational scalability remains a concern for larger formations.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Conclusion</h3>
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The studies provide complementary advancements in trajectory tracking and formation control, leveraging
+                    stochastic methods and reinforcement learning. The <span class="highlight">Stochastic Model-Free Position and
+                        DDPG-based Control</span> method excels in addressing noise and ensuring trajectory stability but faces
+                    limitations in nonlinear settings. On the other hand, the <span class="highlight">Deep Q-learning Formation
+                        Control</span> approach proves highly effective for coordination tasks but encounters scalability issues.
+                    Together, these works pave the way for integrated solutions that combine adaptability, scalability, and
+                    computational efficiency.
+                </p>
+
+            </div>
+            <!-- <section id="resources" class="resources-section">
+                <h2>Related Files & Links</h2>
+                <ul class="resources-list">
+                    <li><a href="../cv.pdf" target="_blank" class="resource-link">Download My CV</a></li>
+                    <li><a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" class="resource-link">Visit
+                            My LinkedIn</a></li>
+                    <li><a href="https://example.com/publication1" target="_blank" class="resource-link">Publication 1: Research
+                            Paper</a></li>
+                    <li><a href="https://example.com/project1" target="_blank" class="resource-link">Project 1: Predictive
+                            Maintenance System</a></li>
+                    <li><a href="https://example.com/project2" target="_blank" class="resource-link">Project 2: Reuleo Smart
+                            Suitcase</a></li>
+                </ul>
+            </section> -->
+            <h3>Thesis Presentation</h3>
+            <div class="video-wrapper">
+                <iframe id="video-frame"
+                    src="https://drive.google.com/file/d/1zsFmpAg2JuqPXamyyfUnJjZsrXd22dCg/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3>Formation Video</h3>
+            <div class="video-wrapper">
+                <iframe id="video-frame2"
+                    src="https://drive.google.com/file/d/1eulSh3YBrGA-8i7NH6qghA2TsjqZCatZ/preview?quality=hd"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3>ICROM Poster</h3>
+            <div class="video-wrapper">
+                <div class="img-container">
+                    <img src="https://drive.google.com/thumbnail?id=1a_QL1Omehld4Zv7m-5kkazrjAUtByZUY&sz=w6000"
+                        alt="Image with magnifier" class="magnifier-img">
+                    <div class="magnifier-tooltip"></div>
+                </div>
+            </div>
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.a.najafqolian@gmail.com">m.a.najafqolian@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
+                        href="tel:+989212919626">+989212919626</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2024 Mohamad Amin Najafqolian</p>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+        const imgContainer = document.querySelector('.img-container');
+        const magnifierTooltip = document.querySelector('.magnifier-tooltip');
+        const magnifierImg = document.querySelector('.magnifier-img');
+
+        imgContainer.addEventListener('mousemove', (e) => {
+            // Get the container's dimensions and position
+            const bounds = imgContainer.getBoundingClientRect();
+
+            // Calculate the mouse position relative to the container
+            const x = e.clientX - bounds.left;
+            const y = e.clientY - bounds.top;
+
+            // Show the magnifier
+            magnifierTooltip.style.display = 'block';
+
+            // Keep the tooltip within the bounds of the container
+            const tooltipX = Math.max(
+                Math.min(x - magnifierTooltip.offsetWidth / 2, bounds.width - magnifierTooltip.offsetWidth),
+                0
+            );
+            const tooltipY = Math.max(
+                Math.min(y - magnifierTooltip.offsetHeight / 2, bounds.height - magnifierTooltip.offsetHeight),
+                0
+            );
+
+            // Position the magnifier
+            magnifierTooltip.style.left = `${tooltipX}px`;
+            magnifierTooltip.style.top = `${tooltipY}px`;
+
+            // Calculate background position for the zoom effect
+            const bgX = ((x / bounds.width) * 100).toFixed(2);
+            const bgY = ((y / bounds.height) * 100).toFixed(2);
+
+            // Update the magnifier background to show the zoomed image
+            magnifierTooltip.style.backgroundImage = `url(${magnifierImg.src})`;
+            magnifierTooltip.style.backgroundPosition = `${bgX}% ${bgY}%`;
+            magnifierTooltip.style.backgroundSize = `${bounds.width * 2.5}px ${bounds.height * 2.5}px`; // Match zoom level
+        });
+
+        imgContainer.addEventListener('mouseleave', () => {
+            // Hide the magnifier when the mouse leaves the container
+            magnifierTooltip.style.display = 'none';
+        });
+
+
+        function adjustIframeSize() {
+            const iframe = document.getElementById('video-frame');
+            iframe.onload = function () {
+                try {
+                    // Access the iframe's content to get the video
+                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    const video = iframeDocument.querySelector('video');
+                    if (video) {
+                        // Get video dimensions
+                        const videoWidth = video.videoWidth;
+                        const videoHeight = video.videoHeight;
+
+                        // Calculate aspect ratio and adjust iframe height
+                        const aspectRatio = videoHeight / videoWidth;
+                        iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                    }
+                } catch (e) {
+                    console.error("Unable to adjust iframe size dynamically:", e);
+                }
+            };
+            const iframe2 = document.getElementById('video-frame2');
+            iframe2.onload = function () {
+                try {
+                    // Access the iframe's content to get the video
+                    const iframeDocument = iframe2.contentDocument || iframe2.contentWindow.document;
+                    const video = iframeDocument.querySelector('video');
+                    if (video) {
+                        // Get video dimensions
+                        const videoWidth = video.videoWidth;
+                        const videoHeight = video.videoHeight;
+
+                        // Calculate aspect ratio and adjust iframe height
+                        const aspectRatio = videoHeight / videoWidth;
+                        iframe2.style.height = `${iframe2.offsetWidth * aspectRatio}px`;
+                    }
+                } catch (e) {
+                    console.error("Unable to adjust iframe size dynamically:", e);
+                }
+            };
+        }
+
+        // Run on page load and resize
+        window.addEventListener('load', adjustIframeSize);
+        window.addEventListener('resize', adjustIframeSize);
+    </script>
+</body>
+
+</html>
