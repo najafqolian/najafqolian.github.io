@@ -125,13 +125,13 @@
             </section> -->
             <h3>Predictive Maintenance Web App</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame" src="https://drive.google.com/file/d/1GxnQ2YyqMW88d-r6tIPs_GPGfkDGKqjy/preview?quality=hd" allow="autoplay; encrypted-media"
+                <iframe class="video-frame" src="https://drive.google.com/file/d/1GxnQ2YyqMW88d-r6tIPs_GPGfkDGKqjy/preview?quality=hd" allow="autoplay; encrypted-media"
                     allowfullscreen>
                 </iframe>
             </div>
             <h3>AR-Enhanced Predictive Maintenance</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame" src="https://drive.google.com/file/d/1j8Wr_djzlXfbgEP5Nie7U2LG7FyWtjVE/preview?quality=hd"
+                <iframe class="video-frame" src="https://drive.google.com/file/d/1j8Wr_djzlXfbgEP5Nie7U2LG7FyWtjVE/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
@@ -154,31 +154,35 @@
     </footer>
     <script src="../script.js"></script>
     <script>
-        function adjustIframeSize() {
-                const iframe = document.getElementById('video-frame');
-                iframe.onload = function () {
-                    try {
-                        // Access the iframe's content to get the video
-                        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-                        const video = iframeDocument.querySelector('video');
-                        if (video) {
-                            // Get video dimensions
-                            const videoWidth = video.videoWidth;
-                            const videoHeight = video.videoHeight;
+        function adjustIframeSizes() {
+                // Select all iframes with the class 'video-frame'
+                const iframes = document.querySelectorAll('.video-frame');
 
-                            // Calculate aspect ratio and adjust iframe height
-                            const aspectRatio = videoHeight / videoWidth;
-                            iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                iframes.forEach((iframe) => {
+                    iframe.onload = function () {
+                        try {
+                            // Access the iframe's content to get the video
+                            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                            const video = iframeDocument.querySelector('video');
+                            if (video) {
+                                // Get video dimensions
+                                const videoWidth = video.videoWidth;
+                                const videoHeight = video.videoHeight;
+
+                                // Calculate aspect ratio and adjust iframe height
+                                const aspectRatio = videoHeight / videoWidth;
+                                iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                            }
+                        } catch (e) {
+                            console.error("Unable to adjust iframe size dynamically:", e);
                         }
-                    } catch (e) {
-                        console.error("Unable to adjust iframe size dynamically:", e);
-                    }
-                };
+                    };
+                });
             }
 
             // Run on page load and resize
-            window.addEventListener('load', adjustIframeSize);
-            window.addEventListener('resize', adjustIframeSize);
+            window.addEventListener('load', adjustIframeSizes);
+            window.addEventListener('resize', adjustIframeSizes);
         </script>
 </body>
 </html>

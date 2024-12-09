@@ -143,25 +143,25 @@
             </section> -->
             <h3>Product Demonstration</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame"
+                <iframe class="video-frame"
                     src="https://drive.google.com/file/d/1mOtrmFFr_DKprfXVmT4otyIDNPh2StMB/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video-frame" src="https://drive.google.com/file/d/1yTXlU4da_1XBi2mHS1Ww71-ZFH20XwVz/preview?quality=hd"
+                <iframe class="video-frame" src="https://drive.google.com/file/d/1yTXlU4da_1XBi2mHS1Ww71-ZFH20XwVz/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
             <h3>Application Demonstration</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame"
+                <iframe class="video-frame"
                     src="https://drive.google.com/file/d/1w7bi7NzXXQqJ6XJdXzhLQWPIlLmxFVK5/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
             <div class="video-wrapper">
-                <iframe id="video-frame" src="https://drive.google.com/file/d/1qfcSJ4fwxKTkHOhIVllSu_pweh6wd2Nh/preview?quality=hd"
+                <iframe class="video-frame" src="https://drive.google.com/file/d/1qfcSJ4fwxKTkHOhIVllSu_pweh6wd2Nh/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
@@ -185,31 +185,35 @@
     </footer>
     <script src="../script.js"></script>
     <script>
-        function adjustIframeSize() {
-            const iframe = document.getElementById('video-frame');
-            iframe.onload = function () {
-                try {
-                    // Access the iframe's content to get the video
-                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-                    const video = iframeDocument.querySelector('video');
-                    if (video) {
-                        // Get video dimensions
-                        const videoWidth = video.videoWidth;
-                        const videoHeight = video.videoHeight;
+        function adjustIframeSizes() {
+                // Select all iframes with the class 'video-frame'
+                const iframes = document.querySelectorAll('.video-frame');
 
-                        // Calculate aspect ratio and adjust iframe height
-                        const aspectRatio = videoHeight / videoWidth;
-                        iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
-                    }
-                } catch (e) {
-                    console.error("Unable to adjust iframe size dynamically:", e);
-                }
-            };
-        }
+                iframes.forEach((iframe) => {
+                    iframe.onload = function () {
+                        try {
+                            // Access the iframe's content to get the video
+                            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                            const video = iframeDocument.querySelector('video');
+                            if (video) {
+                                // Get video dimensions
+                                const videoWidth = video.videoWidth;
+                                const videoHeight = video.videoHeight;
 
-        // Run on page load and resize
-        window.addEventListener('load', adjustIframeSize);
-        window.addEventListener('resize', adjustIframeSize);
+                                // Calculate aspect ratio and adjust iframe height
+                                const aspectRatio = videoHeight / videoWidth;
+                                iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                            }
+                        } catch (e) {
+                            console.error("Unable to adjust iframe size dynamically:", e);
+                        }
+                    };
+                });
+            }
+
+            // Run on page load and resize
+            window.addEventListener('load', adjustIframeSizes);
+            window.addEventListener('resize', adjustIframeSizes);
     </script>
 </body>
 

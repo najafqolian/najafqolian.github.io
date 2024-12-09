@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control</title>
+    <title>Stochastic & RL</title>
     <link rel="icon" href="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w64"
         type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
@@ -135,20 +135,20 @@
             <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
             <a href="../index.html" class="btn">Back to Home</a>
         </div>
-        <h1>Learning-Based MPC</h1>
+        <h1>Stochastic & RL</h1>
     </header>
     <main>
         <section class="project-card">
             <div class="carousel">
                 <div class="carousel-images">
                     <img src="https://drive.google.com/thumbnail?id=1UbRGK1P3FeXNRXO48en0X3yG8FTmwvm_&sz=w1500"
-                        alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control"
+                        alt="Stochastic & RL"
                         class="carousel-item">
                     <img src="https://drive.google.com/thumbnail?id=1f3eAMet54KJ_ygorOXjulPfa27jwZc0d&sz=w1500"
-                        alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control"
+                        alt="Stochastic & RL"
                         class="carousel-item">
                         <img src="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w1500"
-                            alt="Learning-based MPC Innovations: Convex QP LMPC & LSTM-Based Model Predictive Control" class="carousel-item">
+                            alt="Stochastic & RL" class="carousel-item">
                     
                 </div>
                 <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
@@ -202,7 +202,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Robot Trajectory Tracking using Combined Stochastic Model-Free Position and DDPG-based Attitude
+                            <td style="width: 30%;">Robot Trajectory Tracking using Combined Stochastic Model-Free Position and DDPG-based Attitude
                                 Control</td>
                             <td>
                                 This article presents a cascade controller for the quadrotor to track the desired trajectory
@@ -296,14 +296,14 @@
             </section> -->
             <h3>Thesis Presentation</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame"
+                <iframe class="video-frame"
                     src="https://drive.google.com/file/d/1zsFmpAg2JuqPXamyyfUnJjZsrXd22dCg/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
             </div>
             <h3>Formation Video</h3>
             <div class="video-wrapper">
-                <iframe id="video-frame2"
+                <iframe class="video-frame"
                     src="https://drive.google.com/file/d/1eulSh3YBrGA-8i7NH6qghA2TsjqZCatZ/preview?quality=hd"
                     allow="autoplay; encrypted-media" allowfullscreen>
                 </iframe>
@@ -381,50 +381,35 @@
         });
 
 
-        function adjustIframeSize() {
-            const iframe = document.getElementById('video-frame');
-            iframe.onload = function () {
-                try {
-                    // Access the iframe's content to get the video
-                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-                    const video = iframeDocument.querySelector('video');
-                    if (video) {
-                        // Get video dimensions
-                        const videoWidth = video.videoWidth;
-                        const videoHeight = video.videoHeight;
+        function adjustIframeSizes() {
+                // Select all iframes with the class 'video-frame'
+                const iframes = document.querySelectorAll('.video-frame');
 
-                        // Calculate aspect ratio and adjust iframe height
-                        const aspectRatio = videoHeight / videoWidth;
-                        iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
-                    }
-                } catch (e) {
-                    console.error("Unable to adjust iframe size dynamically:", e);
-                }
-            };
-            const iframe2 = document.getElementById('video-frame2');
-            iframe2.onload = function () {
-                try {
-                    // Access the iframe's content to get the video
-                    const iframeDocument = iframe2.contentDocument || iframe2.contentWindow.document;
-                    const video = iframeDocument.querySelector('video');
-                    if (video) {
-                        // Get video dimensions
-                        const videoWidth = video.videoWidth;
-                        const videoHeight = video.videoHeight;
+                iframes.forEach((iframe) => {
+                    iframe.onload = function () {
+                        try {
+                            // Access the iframe's content to get the video
+                            const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                            const video = iframeDocument.querySelector('video');
+                            if (video) {
+                                // Get video dimensions
+                                const videoWidth = video.videoWidth;
+                                const videoHeight = video.videoHeight;
 
-                        // Calculate aspect ratio and adjust iframe height
-                        const aspectRatio = videoHeight / videoWidth;
-                        iframe2.style.height = `${iframe2.offsetWidth * aspectRatio}px`;
-                    }
-                } catch (e) {
-                    console.error("Unable to adjust iframe size dynamically:", e);
-                }
-            };
-        }
+                                // Calculate aspect ratio and adjust iframe height
+                                const aspectRatio = videoHeight / videoWidth;
+                                iframe.style.height = `${iframe.offsetWidth * aspectRatio}px`;
+                            }
+                        } catch (e) {
+                            console.error("Unable to adjust iframe size dynamically:", e);
+                        }
+                    };
+                });
+            }
 
-        // Run on page load and resize
-        window.addEventListener('load', adjustIframeSize);
-        window.addEventListener('resize', adjustIframeSize);
+            // Run on page load and resize
+            window.addEventListener('load', adjustIframeSizes);
+            window.addEventListener('resize', adjustIframeSizes);
     </script>
 </body>
 
