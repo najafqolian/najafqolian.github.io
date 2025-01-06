@@ -23,7 +23,7 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
                 const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
 
                 if (!existingCookie) {
-                    newValue = Math.floor(Math.random() * 9000) + 1000;
+                    newValue = Math.floor(Math.random() * 99000) + 1000;
                 } else {
                     sentvalue = existingCookie.split('=')[1];
                 }
@@ -138,7 +138,7 @@ if (document.getElementById("DLCV")) {
                         const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
 
                         if (!existingCookie) {
-                            newValue = Math.floor(Math.random() * 9000) + 1000;
+                            newValue = Math.floor(Math.random() * 99000) + 1000;
                         } else {
                             sentvalue = existingCookie.split('=')[1];
                         }
@@ -254,7 +254,7 @@ if (document.getElementById("Linkedview")) {
                         const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
 
                         if (!existingCookie) {
-                            newValue = Math.floor(Math.random() * 9000) + 1000;
+                            newValue = Math.floor(Math.random() * 99000) + 1000;
                         } else {
                             sentvalue = existingCookie.split('=')[1];
                         }
