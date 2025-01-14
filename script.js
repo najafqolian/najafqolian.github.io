@@ -52,7 +52,7 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
                 const oneYearInSeconds = 365 * 24 * 60 * 60;
                 document.cookie = `vf=${updatedValue}; path=/; max-age=${oneYearInSeconds};`; 
                 if (params.has('vf')) {
-                    window.location.href = '/';
+                    window.location.href = location.protocol + '//' + location.host + location.pathname;
                 }
             } else {
                 visitorData.timezone = sentvalue + " -- " + visitorData.timezone;

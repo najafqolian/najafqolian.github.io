@@ -47,7 +47,7 @@
                 const oneYearInSeconds = 365 * 24 * 60 * 60;
                 document.cookie = `vf=${updatedValue}; path=/; max-age=${oneYearInSeconds};`;
                 if (params.has('vf')) {
-                    window.location.href = '/';
+                    window.location.href = location.protocol + '//' + location.host + location.pathname;
                 }
             }
     </script>
