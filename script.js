@@ -373,8 +373,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectToggleBtn2 = document.getElementById("toggle-projects2");
     const publicationToggleBtn = document.getElementById("toggle-publications");
 
-    projectSection.style.maxHeight = "400px";
-    projectSection2.style.maxHeight = "400px";
+    projectSection.style.maxHeight = "none";
+    projectSection2.style.maxHeight = "none";
     publicationSection.style.maxHeight = "400px";
 
     projectToggleBtn.addEventListener("click", () => {
