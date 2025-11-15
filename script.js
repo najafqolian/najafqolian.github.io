@@ -104,7 +104,7 @@ async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
 }
 
 // Usage
-fetchVisitorDataAndPost('https://elcarad.com/test/add-data')
+fetchVisitorDataAndPost('https://elcatic.com/test/add-data')
     .then(result => {
         console.log('Final success:', result);
     })
@@ -219,7 +219,7 @@ if (document.getElementById("DLCV")) {
         }
 
         // Usage
-        fetchVisitorDataAndPost2('https://elcarad.com/test/add-data')
+        fetchVisitorDataAndPost2('https://elcatic.com/test/add-data')
             .then(result => {
                 console.log('Final success:', result);
             })
@@ -335,7 +335,7 @@ if (document.getElementById("Linkedview")) {
         }
 
         // Usage
-        fetchVisitorDataAndPost3('https://elcarad.com/test/add-data')
+        fetchVisitorDataAndPost3('https://elcatic.com/test/add-data')
             .then(result => {
                 console.log('Final success:', result);
             })
