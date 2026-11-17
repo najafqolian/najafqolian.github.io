@@ -823,3 +823,215 @@ body {
 iframe {
     border-radius: 15px;
 }
+
+#publication-pdf-dialog {
+    box-sizing: border-box;
+    width: min(32rem, calc(100% - 2rem));
+    padding: 1.75rem;
+    border: 0;
+    border-top: 4px solid #0056b3;
+    border-radius: 16px;
+    background: #fff;
+    color: #1e293b;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.28);
+}
+
+#publication-pdf-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.58);
+    backdrop-filter: blur(3px);
+}
+
+#publication-pdf-dialog h2 {
+    margin: 0 0 1rem;
+    color: #173554;
+}
+
+#publication-pdf-dialog p {
+    margin: 0 0 1rem;
+    line-height: 1.55;
+}
+
+#publication-pdf-paper {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background: #eef5ff;
+    font-weight: 600;
+}
+
+#publication-pdf-email {
+    color: #0056b3;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+#publication-pdf-dialog form {
+    margin-top: 1.25rem;
+    text-align: right;
+}
+
+#publication-pdf-dialog button {
+    padding: 0.55rem 1rem;
+    border: 1px solid #c7daf6;
+    border-radius: 8px;
+    background: #eef5ff;
+    color: #173554;
+    font: inherit;
+    cursor: pointer;
+}
+
+#publication-pdf-dialog button:hover {
+    background: #dceaff;
+}
+
+.profile-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+    max-width: 360px;
+    margin: 20px auto 0;
+}
+
+.profile-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 44px;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: background-color 0.2s ease;
+}
+
+.profile-links a.tue-profile-link {
+    grid-column: 1 / -1;
+    background-color: #fff;
+    color: #0056b3;
+}
+
+.profile-links a.tue-profile-link:hover {
+    background-color: #edf4ff;
+}
+
+.profile-links a:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+    .profile-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Brief colour change when the page loads */
+.navbar {
+    animation: navbarWelcome 1.6s ease-in-out 0.2s 1;
+}
+
+@keyframes navbarWelcome {
+    0%, 100% {
+        background-color: #007bff;
+    }
+
+    45% {
+        background-color: #0056b3;
+    }
+}
+
+/* Highlight each navigation link in sequence */
+@media (min-width: 1121px) {
+    .navbar-link {
+        animation: navbarClickHint 0.9s ease-in-out 0.4s 1;
+    }
+
+    .navbar-list li:nth-child(2) .navbar-link {
+        animation-delay: 0.55s;
+    }
+
+    .navbar-list li:nth-child(3) .navbar-link {
+        animation-delay: 0.7s;
+    }
+
+    .navbar-list li:nth-child(4) .navbar-link {
+        animation-delay: 0.85s;
+    }
+
+    .navbar-list li:nth-child(5) .navbar-link {
+        animation-delay: 1s;
+    }
+
+    .navbar-list li:nth-child(6) .navbar-link {
+        animation-delay: 1.15s;
+    }
+}
+
+/* Highlight the menu button on smaller screens */
+.hamburger {
+    border-radius: 5px;
+    animation: navbarClickHint 1.1s ease-in-out 0.4s 1;
+}
+
+@keyframes navbarClickHint {
+    0%, 100% {
+        background-color: transparent;
+        box-shadow: inset 0 0 0 1px transparent;
+    }
+
+    50% {
+        background-color: rgba(255, 255, 255, 0.22);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Respect the visitor's motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .navbar-link,
+    .hamburger {
+        animation: none;
+    }
+}
+
+.navbar {
+    animation-duration: 2s;
+}
+
+.navbar-link,
+.hamburger {
+    animation-duration: 1.4s;
+}
+.hamburger-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+@media (max-width: 1120px) {
+    .hamburger {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.media-watermark {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    padding: 3px 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+    user-select: none;
+}

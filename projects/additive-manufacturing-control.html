@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A course project connecting repair planning and melt-pool control in additive remanufacturing.">
+    <title>Real-Time Control of Additive Manufacturing | Amin Najafqolian</title>
+    <link rel="icon" href="../test/ico.png" type="image/png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" id="Linkedview">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
+        <h1>Real-Time Control of Additive Manufacturing</h1>
+    </header>
+    <main>
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=1eASb3JVtNGJfIFwUuaX9giHFRudGq1ab&sz=w1500"
+                        alt="Simulated repair workflow from initial geometry and defect selection through scan planning and process evaluation." 
+                        class="carousel-item" style="clip-path: inset(0 2px 0 0);">
+                    
+                    <img src="https://drive.google.com/thumbnail?id=1oZyNKS-i4l3dbq61QMfrTFgvPFrEYnJu&sz=w1500"
+                        alt="Predictive control diagram showing how the repair plan, estimator, and optimizer interact." 
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1atmBsskTvYKtMsm8RAV2Gts3mvq3NVCA&sz=w1500"
+                        alt="Proposed AI-assisted controller with a learned estimator, sequence storage, and an optimizer." 
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1ndJlN_I5QX3e2sAAnWFi2lC_EvYamRn_&sz=w1500"
+                        alt="Simulated temperature maps and depth trace from the deterministic controller for Ti-6Al-4V." 
+                        class="carousel-item" style="box-sizing: border-box; padding: 120px 120px; object-fit: contain;">
+                </div>
+                <button class="carousel-control prev" type="button" aria-label="Previous image" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" type="button" aria-label="Next image" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    This project connects the quality requirements for a returned component with the commands sent to
+                    the deposition process. The aim is to plan the repair from the measured damage and then adjust the
+                    process as the plant deposits new material.
+                </p>
+                <img src="https://drive.google.com/thumbnail?id=1dP0gdsBdWRaT-LeZ-ASF4OShwpO4TD4V&sz=w1500"
+                        alt="Simulated repair workflow from initial geometry and defect selection through scan planning and process evaluation." width="1601" height="444"
+                        class="carousel-item">
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">From repair requirements to machine commands</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The <span
+                    class="highlight">quality control workflow</span></a> begins with incoming quality control (IQC). It
+                    measures the returned part, identifies the repair region, and prepares the scan path and acceptable
+                    limits. In-process quality control (IPQC) uses these limits to monitor and adjust the build. Outgoing
+                    quality control (OQC) checks the repaired part against its requirements.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The <span
+                    class="highlight">deterministic controller</span></a> estimates temperature and the shape of the melt
+                    pool, the small region of metal melted by the laser. Model predictive control uses the estimate to
+                    choose laser power and scan speed for the next several steps. It applies the first command and updates
+                    the plan with the next measurement. The assignment uses the ET+RUSLS estimator and an L-BFGS optimizer.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The study also proposes an <span class="highlight">AI-assisted controller</span></a> for adapting to
+                    process variation. Two recurrent neural networks estimate temperature and melt-pool geometry from recent
+                    measurements. A global optimizer searches for suitable commands as the model adapts.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Simulation results</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The deterministic controller was tested on a CNN-based surrogate for the titanium alloy Ti-6Al-4V. The
+                    target depth was <span class="highlight">100–150 µm below the surface</span>, with a temperature limit
+                    of 2,200 K. In the <span class="highlight">simulated heat distribution</span></a>, the depth trace settles between
+                    the dashed limits along the central part of the scan. The controller took <span class="highlight">7 ms
+                    per update on average and 23 ms at most</span> on the study hardware.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The <span
+                    class="highlight">repair planning example</span></a> shows how the pre-planner identifies the required
+                    scan paths by keeping the portion of each path inside the damaged region. An Inconel 718 finite-element
+                    study in Autodesk Netfabb took 1 hour 52 minutes for the 10-layer powder-bed fusion example and 10 hours
+                    47 minutes for the directed energy deposition example. These runs provided detailed offline process
+                    simulations. The surrogate-based controller supplied the rapid updates in the melt-pool study.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Manuscript</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    <em>Intelligent In-Situ Control Framework for Integrating IQC and IPQC: From Deterministic Control
+                    Design to AI-Driven Decision Making</em> <br>-
+                    <em>Automatica</em>. <a href="../index.html#publications"
+                    style="text-decoration: none;"><span class="highlight">Publications and manuscripts</span></a>
+                </p>
+            </div>
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.najafqolian@tue.nl">m.najafqolian@tue.nl</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a href="tel:+31631318706">+31 6 31 31
+                        87 06</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2025 Amin Najafqolian</p>
+        </div>
+    </footer>
+    <script src="project-carousel.js"></script>
+</body>
+
+</html>

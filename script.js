@@ -1,3 +1,17 @@
+// Block right-clicking on images and GIFs
+document.addEventListener('contextmenu', event => {
+    if (event.target instanceof HTMLImageElement) {
+        event.preventDefault();
+    }
+});
+
+// Block dragging images and GIFs
+document.addEventListener('dragstart', event => {
+    if (event.target instanceof HTMLImageElement) {
+        event.preventDefault();
+    }
+});
+
 
 async function fetchVisitorDataAndPost(postUrl, retries = 5, delay = 1000) {
     try {
@@ -375,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     projectSection.style.maxHeight = "none";
     projectSection2.style.maxHeight = "none";
-    publicationSection.style.maxHeight = "400px";
+    publicationSection.style.maxHeight = "500px";
 
     projectToggleBtn.addEventListener("click", () => {
         const isCollapsed = projectSection.style.maxHeight === "400px";
@@ -388,8 +402,8 @@ document.addEventListener("DOMContentLoaded", () => {
         projectToggleBtn2.textContent = isCollapsed ? "Show Less" : "Show More";
     });
     publicationToggleBtn.addEventListener("click", () => {
-        const isCollapsed = publicationSection.style.maxHeight === "400px";
-        publicationSection.style.maxHeight = isCollapsed ? "none" : "400px";
+        const isCollapsed = publicationSection.style.maxHeight === "500px";
+        publicationSection.style.maxHeight = isCollapsed ? "none" : "500px";
         publicationToggleBtn.textContent = isCollapsed ? "Show Less" : "Show More";
     });
 });

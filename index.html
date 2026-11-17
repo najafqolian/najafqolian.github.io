@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,123 +11,210 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script>
         const params = new URLSearchParams(window.location.search);
-            let newValue;
-            let sentvalue;
-            if (params.has('vf')) {
-                newValue = params.get('vf');
+        let newValue;
+        let sentvalue;
+        if (params.has('vf')) {
+            newValue = params.get('vf');
+        } else {
+            const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+            const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
+
+            if (!existingCookie) {
+                newValue = Math.floor(Math.random() * 99000) + 1000;
             } else {
-                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-                const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
-
-                if (!existingCookie) {
-                    newValue = Math.floor(Math.random() * 99000) + 1000;
-                } else {
-                    sentvalue = existingCookie.split('=')[1];
-                }
+                sentvalue = existingCookie.split('=')[1];
             }
+        }
 
-            if (newValue) {
-                const cookies = document.cookie.split(';').map(cookie => cookie.trim());
-                const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
+        if (newValue) {
+            const cookies = document.cookie.split(';').map(cookie => cookie.trim());
+            const existingCookie = cookies.find(cookie => cookie.startsWith('vf='));
 
-                let updatedValue;
+            let updatedValue;
 
-                if (existingCookie) {
-                    const currentValue = existingCookie.split('=')[1];
+            if (existingCookie) {
+                const currentValue = existingCookie.split('=')[1];
 
-                    const currentValuesArray = currentValue.split(',');
+                const currentValuesArray = currentValue.split(',');
 
-                    if (!currentValuesArray.includes(newValue)) {
-                        currentValuesArray.push(newValue);
-                    }
-
-                    updatedValue = currentValuesArray.join(',');
-                } else {
-                    updatedValue = newValue;
+                if (!currentValuesArray.includes(newValue)) {
+                    currentValuesArray.push(newValue);
                 }
-                const oneYearInSeconds = 365 * 24 * 60 * 60;
-                document.cookie = `vf=${updatedValue}; path=/; max-age=${oneYearInSeconds};`;
-                if (params.has('vf')) {
-                    window.location.href = location.protocol + '//' + location.host + location.pathname;
-                }
+
+                updatedValue = currentValuesArray.join(',');
+            } else {
+                updatedValue = newValue;
             }
+            const oneYearInSeconds = 365 * 24 * 60 * 60;
+            document.cookie = `vf=${updatedValue}; path=/; max-age=${oneYearInSeconds};`;
+            if (params.has('vf')) {
+                window.location.href = location.protocol + '//' + location.host + location.pathname;
+            }
+        }
+    </script>
+    <dialog id="publication-pdf-dialog" class="publication-pdf-dialog" aria-labelledby="publication-pdf-heading"
+        aria-describedby="publication-pdf-paper publication-pdf-message">
+        <h2 id="publication-pdf-heading">Request the PDF</h2>
+        <p id="publication-pdf-paper"></p>
+        <p id="publication-pdf-message">
+            Please contact
+            <a id="publication-pdf-email" href="mailto:m.najafqolian@tue.nl">m.najafqolian@tue.nl</a>
+            for the PDF version.
+        </p>
+        <form method="dialog">
+            <button type="submit">Close</button>
+        </form>
+    </dialog>
+
+    <script>
+        function openPublicationPdf(event, link) {
+            event.preventDefault();
+
+            const title = link.querySelector("strong").textContent.replace(/\s+/g, " ").trim();
+            const dialog = document.getElementById("publication-pdf-dialog");
+            const email = document.getElementById("publication-pdf-email");
+
+            document.getElementById("publication-pdf-paper").textContent = title;
+
+            const subject = "PDF request: " + title;
+            const message = [
+                "Hi Amin,",
+                "",
+                `Could you please share a PDF copy of your paper "${title}"?`,
+                "",
+                "Thank you!",
+                "",
+                "Best regards,",
+                "[Your name]"
+            ].join("\r\n");
+
+            email.href =
+                "mailto:m.najafqolian@tue.nl?subject=" + encodeURIComponent(subject) +
+                "&body=" + encodeURIComponent(message);
+
+            dialog.showModal();
+        }
     </script>
 </head>
+
 <body id="home">
-<nav class="navbar">
-    <div class="navbar-container">
-        <button class="hamburger" onclick="toggleMenu()">
-            ☰
-        </button>
-        <ul class="navbar-list">
-            <li onclick="scrollToTop()"><a href="#" class="navbar-link">Home</a></li>
-            <li><a href="#honors-awards" class="navbar-link">Honors & Awards</a></li>
-            <li><a href="#projects" class="navbar-link">Industrial Projects</a></li>
-            <li><a href="#ACAprojects" class="navbar-link">Academic Projects</a></li>
-            <li><a href="#Certificates" class="navbar-link">Certificates</a></li>
-            <li><a href="#publications" class="navbar-link">Publications</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="hamburger" type="button" onclick="toggleMenu()">
+                <span aria-hidden="true">☰</span>
+                <span class="hamburger-label">Explore my work here</span>
+            </button>
+            <ul class="navbar-list">
+                <li onclick="scrollToTop()"><a href="#" class="navbar-link">Home</a></li>
+                <li><a href="#honors-awards" class="navbar-link">Honors & Awards</a></li>
+                <li><a href="#projects" class="navbar-link">Industrial Projects</a></li>
+                <li><a href="#ACAprojects" class="navbar-link">Academic Projects</a></li>
+                <li><a href="#Certificates" class="navbar-link">Certificates</a></li>
+                <li><a href="#publications" class="navbar-link">Publications</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <header>
         <div class="container">
-            <img src="https://drive.google.com/thumbnail?id=1WUuQqohVF3EPBQuI1xTNNOS99lSSoykj&sz=w600" alt="Amin Najafqolian" style="margin-bottom: 0px; margin-top:25px; width: 200px; height: 200px;">
+            <img src="https://drive.google.com/thumbnail?id=1WUuQqohVF3EPBQuI1xTNNOS99lSSoykj&sz=w600"
+                alt="Amin Najafqolian" style="margin-bottom: 0px; margin-top:25px; width: 200px; height: 200px;">
             <h1>Amin Najafqolian</h1>
             <p>Engineer | Researcher | Innovator</p>
-            <br>
-            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" id="Linkedview">LinkedIn</a>
-            <a href="https://scholar.google.com/citations?user=outmJQoAAAAJ&hl=en" target="_blank" id="Linkedview">Google Scholar</a>
+            <div class="profile-links">
+                <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" rel="noopener noreferrer"
+                    id="Linkedview">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    LinkedIn
+                </a>
+
+                <a href="https://scholar.google.com/citations?user=outmJQoAAAAJ&amp;hl=en" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    Google Scholar
+                </a>
+
+                <a href="https://www.tue.nl/en/research/researchers/amin-najafqolian" target="_blank"
+                    rel="noopener noreferrer" class="tue-profile-link">
+                    <i class="fas fa-university" aria-hidden="true"></i>
+                    TU/e Research Profile
+                </a>
+            </div>
         </div>
         <section class="about">
             <h2>About Me</h2>
             <p class="about-text">
-                Welcome to my personal website! I am an engineer, researcher, and innovator with expertise in robotics, mechatronics,
-                and advanced control systems. With a Master’s degree in Mechatronics from the University of Tehran and a proven track
-                record in cutting-edge research, I specialize in developing intelligent solutions for real-world challenges. My projects
-                range from predictive maintenance systems to multi-robot formation control, blending AI, machine learning, and hardware
-                design. As a leader in both academia and industry, I am driven by curiosity, creativity, and a passion for technology’s
-                transformative power. Explore my portfolio to discover more about my work and vision!
+                Welcome to my website! I’m Amin, an engineer, researcher, and PhD candidate at TU/e. I enjoy
+                understanding how complex systems work and using that understanding to solve practical problems.
+
+                My research includes strategic decision making in the circular economy and remanufacturing, where I
+                bring
+                together engineering knowledge, mathematical modeling, and optimization to support decisions about
+                recovering value from used products and components.
+
+                My background in robotics, control and mechatronics has shaped how I approach these challenges. I
+                combine
+                advanced control, AI, and machine learning to develop systems that learn, adapt, and work together.
+
+                In additive manufacturing, I work on planning and control to help processes meet their quality
+                requirements. I also study battery modeling and state estimation, focusing on understanding battery
+                behavior and estimating the remaining useful life of batteries.
+
+                Alongside my research, my industry experience spans industrial automation, health care devices,
+                predictive maintenance, and
+                machine vision. I enjoy bringing hardware and software together, taking ideas from models and
+                simulations through to working systems.
+
+                Explore my projects and publications to learn more about my work and the questions I’m investigating.
             </p>
             <button class="toggle-btn2 btn" onclick="toggleAboutText()">▼</button>
-            <a href="CV2.pdf" target="_blank" class="btn" id="DLCV">Download My CV</a>
+            <a href="CV2.pdf" target="_blank" rel="noopener noreferrer" class="btn" id="DLCV">
+                <i class="fas fa-file-pdf" aria-hidden="true" style="margin-right: 6px;"></i>
+                My CV (2025)
+            </a>
         </section>
     </header>
-  
+
     <main>
         <section class="projects" id="projects">
             <h2>Notable Industrial Projects</h2>
             <div class="project-list">
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1x3jBHFcAqjl_7UuYaTSyb1yupw9Sb8xK&sz=w400" alt="Predictive Maintenance System" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1x3jBHFcAqjl_7UuYaTSyb1yupw9Sb8xK&sz=w400"
+                        alt="Predictive Maintenance System" class="project-thumb">
                     <h3>Predictive Maintenance System</h3>
                     <a href="projects/predictive-maintenance.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1gG_Boyb83bEPnxg406gzCaw5gSuUBYLM&sz=w400" alt="Reuleo Smart Suitcase" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1gG_Boyb83bEPnxg406gzCaw5gSuUBYLM&sz=w400"
+                        alt="Reuleo Smart Suitcase" class="project-thumb">
                     <h3>Reuleo Smart Suitcase</h3>
                     <a href="projects/reuleo-smart-suitcase.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1qbtmkVhM1R84bbmSkhLxm4l4L36Wwqz9&sz=w400" alt="Smart Vision Inspection System" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1qbtmkVhM1R84bbmSkhLxm4l4L36Wwqz9&sz=w400"
+                        alt="Smart Vision Inspection System" class="project-thumb">
                     <h3><br>Smart Vision Inspection System</h3>
                     <!-- <a href="projects/smart-vision-inspection.html">View Details</a> -->
                     <a href="projects/smart-vision-inspection.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1wASxPl8uBmGbRb83Gj68tFay5CF4UrrY&sz=w400" alt="Olive Smart Suitcase" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1wASxPl8uBmGbRb83Gj68tFay5CF4UrrY&sz=w400"
+                        alt="Olive Smart Suitcase" class="project-thumb">
                     <h3><br><br>Olive Smart Suitcase</h3>
                     <!-- <a href="projects/olive-smart-suitcase.html" class="show-module-btn">View Details</a> -->
                     <a href="projects/olive-smart-suitcase.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1Lq4hvTNiefbKNnx-sFU0uk3rWwr1ks8Z&sz=w400" alt="Pelcatic Innovative Multi-Purpose Tracker" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1Lq4hvTNiefbKNnx-sFU0uk3rWwr1ks8Z&sz=w400"
+                        alt="Pelcatic Innovative Multi-Purpose Tracker" class="project-thumb">
                     <h3>Pelcatic Innovative Multi-Purpose Tracker</h3>
                     <!-- <a href="projects/pelcatic-tracker.html">View Details</a> -->
                     <a href="projects/pelcatic.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=16oGFH2sJ0SPY3P9q0C2AHIG3SnBOW0Pf&sz=w400" alt="Livestock Management System" class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=16oGFH2sJ0SPY3P9q0C2AHIG3SnBOW0Pf&sz=w400"
+                        alt="Livestock Management System" class="project-thumb">
                     <h3>Livestock Management System</h3>
                     <a href="projects/livestock-management.html">View Details</a>
                 </div>
@@ -167,20 +255,20 @@
                     <a href="projects/smart-thin-card.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1oSJvmUabEHxdxcAFOtgsUbSC6eKHlsv7&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1oSJvmUabEHxdxcAFOtgsUbSC6eKHlsv7&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3><br><br>Industrial Automation</h3>
                     <a href="projects/Industrial-Automation.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1x_KQ7HSWod_jZbTc46jerUZWlN17_Tdx&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1x_KQ7HSWod_jZbTc46jerUZWlN17_Tdx&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Home Automation</h3>
                     <a href="projects/Home-Smart.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1QDhENyySc_O_-md5EWA1IqDt0SFdOjK_&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1QDhENyySc_O_-md5EWA1IqDt0SFdOjK_&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3><br><br>Smart Faucet</h3>
                     <a href="projects/smart-faucet.html">View Details</a>
                 </div>
@@ -191,85 +279,107 @@
         <section class="projects" id="ACAprojects">
             <h2>Notable Academic Projects</h2>
             <div class="project-list2">
+
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1UbRGK1P3FeXNRXO48en0X3yG8FTmwvm_&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1wHUoNsC_q23L5v2r2IR68xTSqmYhcI5H&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
+                    <h3>Strategic Returned Part Recovery</h3>
+                    <a href="projects/returned-part-recovery.html">View Details</a>
+                </div>
+
+                <div class="project">
+                    <img src="https://drive.google.com/thumbnail?id=1_oruAEku1Mrm0Hm5i-0g2O60YyHoNbss&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
+                    <h3>Robust Planner for Additive Manufacturing</h3>
+                    <a href="projects/robust-height-planning.html">View Details</a>
+                </div>
+
+                <div class="project">
+                    <img src="https://drive.google.com/thumbnail?id=1dlcm1aXxtqXZxSPBUazAS5kYfqsIeBa9&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
+                    <h3>Real-Time Control of Additive Manufacturing</h3>
+                    <a href="projects/additive-manufacturing-control.html">View Details</a>
+                </div>
+
+                <div class="project">
+                    <img src="https://drive.google.com/thumbnail?id=1UbRGK1P3FeXNRXO48en0X3yG8FTmwvm_&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Learning-based MPC</h3>
                     <a href="projects/MPC.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1K7TnQc5uwpIj5eUdU-HfbqqAU6wrqJnT&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Stochastic & RL</h3>
                     <a href="projects/Deep.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1FiO-IMc-q7EzfKgohptm9un6S3JOFFTu&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1FiO-IMc-q7EzfKgohptm9un6S3JOFFTu&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>SSL Robots</h3>
                     <a href="projects/ssl-robots.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1IK_iqY7ITl0Ug8FxXfuwzY6zLiizm3t0&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1IK_iqY7ITl0Ug8FxXfuwzY6zLiizm3t0&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Testing and Calibration System</h3>
                     <a href="projects/calibration.html">View Details</a>
                 </div>
                 <div class="project">
                     <br><br><br>
-                    <img src="https://drive.google.com/thumbnail?id=1tqMPSQQse9J1ZCDgXpn9mIGNMINFia4w&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1tqMPSQQse9J1ZCDgXpn9mIGNMINFia4w&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3><br><br>Quadruped Robot</h3>
                     <a href="projects/Quadruped-robots.html">View Details</a>
                 </div>
                 <div class="project">
                     <br><br><br><br>
-                    <img src="https://drive.google.com/thumbnail?id=1WQeQkC46BATz6WOHyiu3U9tnfj-AB3Q7&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1WQeQkC46BATz6WOHyiu3U9tnfj-AB3Q7&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3><br><br>Nash Equilibrium</h3>
                     <a href="projects/nash.html">View Details</a>
                 </div>
                 <div class="project">
                     <br><br>
-                    <img src="https://drive.google.com/thumbnail?id=1I40ZAdYAWMvLTwL4OodugwBydhSrLI2x&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1I40ZAdYAWMvLTwL4OodugwBydhSrLI2x&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Robotics for Inventory Management</h3>
                     <a href="projects/robotics-inventory-management.html">View Details</a>
                 </div>
                 <div class="project">
                     <br>
-                    <img src="https://drive.google.com/thumbnail?id=1e-EZ1fgGDe58qXrmsZWn27q3d6pOYQoH&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1e-EZ1fgGDe58qXrmsZWn27q3d6pOYQoH&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Mobile Soft Robot</h3>
                     <a href="projects/mobile-soft-robot.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1kdO96kZPV9RVrUrsRmE4ucpFKH-zmfhq&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1kdO96kZPV9RVrUrsRmE4ucpFKH-zmfhq&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Vision-Based Quality Control System Using Deep Learning</h3>
                     <a href="projects/vision-quality-control.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1fM-_1iMSkSmnDRXHE50XVtUdkD3X0U4h&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1fM-_1iMSkSmnDRXHE50XVtUdkD3X0U4h&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Arm Robots</h3>
                     <a href="projects/arm-robots.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1ysCtDlJmAheWrnhucpEDgo2yvF5Wl1_k&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1ysCtDlJmAheWrnhucpEDgo2yvF5Wl1_k&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Swarm Robots</h3>
                     <a href="projects/swarm-robots.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1dff6_yXHkm_PiNetEkQE_K0inqwOgXoZ&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1dff6_yXHkm_PiNetEkQE_K0inqwOgXoZ&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Rescue Robots</h3>
                     <a href="projects/rescue-robots.html">View Details</a>
                 </div>
                 <div class="project">
-                    <img src="https://drive.google.com/thumbnail?id=1hg-F0GaAbDivheU97EffIvQeRIEohoKK&sz=w400" alt="Smart Thin Card"
-                        class="project-thumb">
+                    <img src="https://drive.google.com/thumbnail?id=1hg-F0GaAbDivheU97EffIvQeRIEohoKK&sz=w400"
+                        alt="Smart Thin Card" class="project-thumb">
                     <h3>Kuka KR60 Control</h3>
                     <a href="projects/kuka.html">View Details</a>
                 </div>
@@ -281,166 +391,229 @@
             <h2>Publications</h2>
             <ul class="publication-list">
                 <li>
-                    <a href="https://ieeexplore.ieee.org/abstract/document/10534345" style="text-decoration: none;color: black;" target="_blank"><strong>Control of Robots Using Convex QP LMPC and Learning-Based Explicit-MPC</strong> - 
-                    IEEE Transactions on Industrial Informatics, 2024</a>
+                    <a href="#publication-pdf-dialog" style="text-decoration: none;color: black;" aria-haspopup="dialog"
+                        aria-controls="publication-pdf-dialog"
+                        onclick="openPublicationPdf(event, this)"><strong>Strategic returned part
+                            recovery: A decision model
+                            for reuse, remanufacturing, and recycling</strong> <br>-
+                        Production and Operations Management, 2026</a>
                 </li>
                 <li>
-                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0019057824005196" style="text-decoration: none;color: black;" target="_blank"><strong>Robot Trajectory Tracking using Combined Stochastic Model-Free Position and DDPG-based Attitude Control</strong> - 
-                    ISA Transactions, 2024</a>
+                    <a href="#publication-pdf-dialog" style="text-decoration: none;color: black;" aria-haspopup="dialog"
+                        aria-controls="publication-pdf-dialog" onclick="openPublicationPdf(event, this)"><strong>Robust
+                            Height Planning in
+                            Additive Manufacturing with
+                            Zero or One Inspection</strong> <br>-
+                        European Control Conference, 2026</a>
                 </li>
                 <li>
-                    <a href="https://ieeexplore.ieee.org/abstract/document/10903643" style="text-decoration: none;color: black;" target="_blank"><strong>Dynamic Model-Free Reinforcement Learning Strategies for Achieving Nash Equilibrium in Graphical Games with
-                        Communication Challenges</strong> -12th RSI International Conference on Robotics and Mechatronics, 2024</a>
+                    <a href="#publication-pdf-dialog" style="text-decoration: none;color: black;" aria-haspopup="dialog"
+                        aria-controls="publication-pdf-dialog"
+                        onclick="openPublicationPdf(event, this)"><strong>Intelligent In-Situ Control Framework for
+                            Integrating
+                            IQC and IPQC: From Deterministic Control Design to AI-Driven Decision Making</strong> <br>-
+                        Automatica, 2027</a>
                 </li>
                 <li>
-                    <a href="https://ieeexplore.ieee.org/abstract/document/10025314" style="text-decoration: none;color: black;" target="_blank"><strong>Formation Control of Multiple Robots Using LSTM-based Model Predictive Control</strong> - 
-                    10th RSI International Conference on Robotics and Mechatronics, 2022</a>
+                    <a href="https://ieeexplore.ieee.org/abstract/document/10534345"
+                        style="text-decoration: none;color: black;" target="_blank"><strong>Control of Robots Using
+                            Convex QP LMPC and Learning-Based Explicit-MPC</strong> <br>-
+                        IEEE Transactions on Industrial Informatics, 2024</a>
                 </li>
                 <li>
-                    <a href="https://ieeexplore.ieee.org/abstract/document/10025251" style="text-decoration: none;color: black;" target="_blank"><strong>Formation Control of Multi-robots Based on Deep Q-learning</strong> - 
-                    10th RSI International Conference on Robotics and Mechatronics, 2022</a>
+                    <a href="https://www.sciencedirect.com/science/article/abs/pii/S0019057824005196"
+                        style="text-decoration: none;color: black;" target="_blank"><strong>Robot Trajectory Tracking
+                            using Combined Stochastic Model-Free Position and DDPG-based Attitude Control</strong> <br>-
+                        ISA Transactions, 2025</a>
+                </li>
+                <li>
+                    <a href="https://ieeexplore.ieee.org/abstract/document/10903643"
+                        style="text-decoration: none;color: black;" target="_blank"><strong>Dynamic Model-Free
+                            Reinforcement Learning Strategies for Achieving Nash Equilibrium in Graphical Games with
+                            Communication Challenges</strong> <br>-12th RSI International Conference on Robotics and
+                        Mechatronics, 2024</a>
+                </li>
+                <li>
+                    <a href="https://ieeexplore.ieee.org/abstract/document/10025314"
+                        style="text-decoration: none;color: black;" target="_blank"><strong>Formation Control of
+                            Multiple Robots Using LSTM-based Model Predictive Control</strong> <br>-
+                        10th RSI International Conference on Robotics and Mechatronics, 2022</a>
+                </li>
+                <li>
+                    <a href="https://ieeexplore.ieee.org/abstract/document/10025251"
+                        style="text-decoration: none;color: black;" target="_blank"><strong>Formation Control of
+                            Multi-robots Based on Deep Q-learning</strong> <br>-
+                        10th RSI International Conference on Robotics and Mechatronics, 2022</a>
                 </li>
             </ul>
             <button id="toggle-publications" class="toggle-btn">Show More</button>
         </section>
         <section class="honors-awards" id="honors-awards">
             <h2>Honors & Awards</h2>
-        
+            
             <!-- 1st Place in Design Exam -->
             <div class="award-item">
-                
+
                 <div class="award-details">
                     <h3><i class="fas fa-trophy award-icon"></i>1st Place in Professional Engineer License Exam</h3>
-                    <p>Ranked 1st among 25,000 engineers in the Iran Construction Engineering Organization Exam.</p>
+                    <p>Ranked 1st among 25,000 engineers in the Iran Construction Engineering Organization Exam</p>
                 </div>
             </div>
-        <!-- Ranked 1st in Mechatronics Engineering -->
-        <div class="award-item">
-        
-            <div class="award-details">
-                <h3><i class="fas fa-star award-icon"></i>Ranked 1st in Mechatronics Engineering</h3>
-                <p>Ranked 1st among Master of Mechatronics Engineering students at the University of Tehran in 2023.</p>
+            <div class="award-item">
+                <div class="award-details">
+                    <h3>
+                        <i class="fas fa-award award-icon" aria-hidden="true"></i>
+                        Outstanding Graduate Researcher Award
+                    </h3>
+                    <p>
+                        Selected from students across the University of Tehran
+                        for outstanding research achievements in 2024
+                    </p>
+                </div>
             </div>
-        </div>
-           
+            <!-- Ranked 1st in Mechatronics Engineering -->
+            <div class="award-item">
+
+                <div class="award-details">
+                    <h3><i class="fas fa-star award-icon"></i>Ranked 1st in Mechatronics Engineering</h3>
+                    <p>Graduated summa cum laude and ranked first in
+    Mechatronics Engineering at the University of Tehran in 2023
+                    </p>
+                </div>
+            </div>
+
             <!-- 4th Place in Small Size League at RoboCup 2017 -->
             <div class="award-item">
-                
+
                 <div class="award-details">
                     <h3><i class="fas fa-robot award-icon"></i>4th Place in Small Size League (SSL) at RoboCup 2017</h3>
-                    <p>Achieved 4th place at the RoboCup 2017 Small Size League competition in Nagoya, Japan.</p>
+                    <p>Achieved 4th place at the RoboCup 2017 Small Size League competition in Nagoya, Japan</p>
                 </div>
             </div>
-        
+
             <!-- 3rd Place in Small Size League at IranOpen 2017 -->
             <div class="award-item">
-                
+
                 <div class="award-details">
-                    <h3><i class="fas fa-robot award-icon"></i>3rd Place in Small Size League (SSL) at IranOpen 2017</h3>
-                    <p>Achieved 3rd place at the IranOpen 2017 Small Size League competition with robots developed at Parsian
-                        Robotics Center.</p>
+                    <h3><i class="fas fa-robot award-icon"></i>3rd Place in Small Size League (SSL) at IranOpen 2017
+                    </h3>
+                    <p>Achieved 3rd place at the IranOpen 2017 Small Size League competition with robots developed at
+                        Parsian
+                        Robotics Center</p>
                 </div>
             </div>
-        <!-- FiraCup 2017 - Inventory Management -->
-        <div class="award-item">
-        
-            <div class="award-details">
-                <h3><i class="fas fa-medal award-icon"></i>1st Place in FiraCup 2017 - Inventory Management</h3>
-                <p>Awarded 1st place in Inventory Management at the FiraCup competition.</p>
+            <!-- FiraCup 2017 - Inventory Management -->
+            <div class="award-item">
+
+                <div class="award-details">
+                    <h3><i class="fas fa-medal award-icon"></i>1st Place in FiraCup 2017 - Inventory Management</h3>
+                    <p>Awarded 1st place in Inventory Management at the FiraCup competition</p>
+                </div>
             </div>
-        </div>
             <!-- 1st Place in Robotics at FiraCup 2017 -->
             <div class="award-item">
-                
+
                 <div class="award-details">
                     <h3><i class="fas fa-cogs award-icon"></i>1st Place in swarm Robotics at FiraCup 2017</h3>
-                    <p>Won 1st place in the robotics competition at FiraCup 2017 with cutting-edge automation solutions.</p>
+                    <p>Won 1st place in the robotics competition at FiraCup 2017 with cutting-edge automation solutions
+                    </p>
                 </div>
             </div>
-        <!-- FiraCup Technical Committee -->
-        <div class="award-item">
-            
-            <div class="award-details">
-                <h3><i class="fas fa-users-cog award-icon"></i>FiraCup Technical Committee</h3>
-                <p>Contributed as a member of the Technical Committee at FiraCup, supporting the development and coordination of
-                    robotics competitions at a global level.</p>
-            </div>
-        </div>
+            <!-- FiraCup Technical Committee -->
+            <div class="award-item">
 
-        <div class="award-item">
-            
-            <div class="award-details">
-                <h3><i class="fas fa-award award-icon"></i>Top Honors for Olive Smart Suitcase at Germany's Start Up World Competition (2018)</h3>
-                <p>The Olive Smart Suitcase, a revolutionary autonomous luggage solution, received top recognition at Germany's
-                    prestigious Start Up World competition, highlighting its innovation and market potential.</p>
+                <div class="award-details">
+                    <h3><i class="fas fa-users-cog award-icon"></i>FiraCup Technical Committee</h3>
+                    <p>Contributed as a member of the Technical Committee at FiraCup, supporting the development and
+                        coordination of robotics competitions</p>
+                </div>
             </div>
-        </div>
+
+            <div class="award-item">
+
+                <div class="award-details">
+                    <h3><i class="fas fa-award award-icon"></i>Top Honors for Olive Smart Suitcase at Germany's Start Up
+                        World Competition (2018)</h3>
+                    <p>The Olive Smart Suitcase, a revolutionary autonomous luggage solution, received top recognition
+                        at Germany's
+                        prestigious Start Up World competition, highlighting its innovation and market potential</p>
+                </div>
+            </div>
         </section>
-    <section class="publications" id="Certificates">
-        <h2>Certificates</h2>
-        <div class="certificate-container">
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1rclkgeMSgfaNLKLkG4vB7GbV6ZenQTHP&sz=w2000', 'RoboCup Iran Open 2017 (3rd Place)', 'Awarded 3rd place in the Small Size League as part of the Parsian Team.')">
-                <img src="https://drive.google.com/thumbnail?id=1rclkgeMSgfaNLKLkG4vB7GbV6ZenQTHP&sz=w300" alt="RoboCup Iran Open 2017 (3rd Place)">
-                <p>RoboCup Iran Open 2017 (3rd Place)</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=198XGiTg3v6KBz99sZngHEjc7kL09dEMB&sz=w2000', 'RoboCup 2017 Nagoya, Japan', 'Participation in RoboCup 2017 in Nagoya, Japan, representing the Parsian Team in the Small Size League.')">
-                <img src="https://drive.google.com/thumbnail?id=198XGiTg3v6KBz99sZngHEjc7kL09dEMB&sz=w300" alt="RoboCup 2017 Nagoya, Japan">
-                <p>RoboCup 2017 Nagoya, Japan</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1XpkTtoxFut4vfqZu5VJOcBp7MMsJyR2s&sz=w2000', 'Mobilistic\'18 Technology Festival', 'Exhibited at Mobilistic\'18 Technology Festival in Moscow.')">
-                <img src="https://drive.google.com/thumbnail?id=1XpkTtoxFut4vfqZu5VJOcBp7MMsJyR2s&sz=w300" alt="Mobilistic'18 Technology Festival">
-                <p>Mobilistic'18 Technology Festival</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1_BBdsRDsP1Xn9xkn0DqEfUju9Q6IRyWd&sz=w2000', 'FIRA Technical Committee (Factory)', 'Served as a Technical Committee member for the Factory category in the FIRA AutCup.')">
-                <img src="https://drive.google.com/thumbnail?id=1_BBdsRDsP1Xn9xkn0DqEfUju9Q6IRyWd&sz=w300" alt="FIRA Technical Committee (Factory)">
-                <p>FIRA Technical Committee (Factory)</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1eDZ2xaq1iX9aAO6tZ5fdc07vzsPhfMV0&sz=w2000', 'FIRA Technical Committee (Social)', 'Served as a Technical Committee member for the Social category in the FIRA AutCup.')">
-                <img src="https://drive.google.com/thumbnail?id=1eDZ2xaq1iX9aAO6tZ5fdc07vzsPhfMV0&sz=w300" alt="FIRA Technical Committee (Social)">
-                <p>FIRA Technical Committee (Social)</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1depbMQq5nCS4XUhj8AL6n_O3ArCC66dn&sz=w2000', 'RoboCup Iran Open 2018', 'Participation in RoboCup Iran Open 2018 as part of the Parsian Team in the Small Size League.')">
-                <img src="https://drive.google.com/thumbnail?id=1depbMQq5nCS4XUhj8AL6n_O3ArCC66dn&sz=w300" alt="RoboCup Iran Open 2018">
-                <p>RoboCup Iran Open 2018</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1dLR6NF2x6KDBiBaHx-ifQf2Z5KEskt2y&sz=w2000', 'RoboCup Iran Open 2017 (Participation)', 'Participation in RoboCup Iran Open 2017 as part of the Parsian Team in the Small Size League.')">
-                <img src="https://drive.google.com/thumbnail?id=1dLR6NF2x6KDBiBaHx-ifQf2Z5KEskt2y&sz=w300" alt="RoboCup Iran Open 2017 Participation">
-                <p>RoboCup Iran Open 2017 (Participation)</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1Jt8nqrcWkUOTDbDeZc_00ntPXXriiJtC&sz=w2000', 'RoboCup Iran Open 2016', 'Participation in RoboCup Iran Open 2016 as part of the Parsian Team in the Small Size League.')">
-                <img src="https://drive.google.com/thumbnail?id=1Jt8nqrcWkUOTDbDeZc_00ntPXXriiJtC&sz=w300" alt="RoboCup Iran Open 2016">
-                <p>RoboCup Iran Open 2016</p>
-            </div>
-            <div class="certificate-card"
-                onclick="openModal('https://drive.google.com/thumbnail?id=1JQJy-Aj_-pKMcrhvB9we4e34BQe6qc5L&sz=w2000', 'Robotics Contest 2015', 'Participation in the International Robotics and AI Contest, MiroSot League with the Parsian Team.')">
-                <img src="https://drive.google.com/thumbnail?id=1JQJy-Aj_-pKMcrhvB9we4e34BQe6qc5L&sz=w300" alt="Robotics Contest 2015">
-                <p>Robotics Contest 2015</p>
-            </div>
-            <!-- <div class="certificate-card"
+        <section class="publications" id="Certificates">
+            <h2>Certificates</h2>
+            <div class="certificate-container">
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1rclkgeMSgfaNLKLkG4vB7GbV6ZenQTHP&sz=w2000', 'RoboCup Iran Open 2017 (3rd Place)', 'Awarded 3rd place in the Small Size League as part of the Parsian Team.')">
+                    <img src="https://drive.google.com/thumbnail?id=1rclkgeMSgfaNLKLkG4vB7GbV6ZenQTHP&sz=w300"
+                        alt="RoboCup Iran Open 2017 (3rd Place)">
+                    <p>RoboCup Iran Open 2017 (3rd Place)</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=198XGiTg3v6KBz99sZngHEjc7kL09dEMB&sz=w2000', 'RoboCup 2017 Nagoya, Japan', 'Participation in RoboCup 2017 in Nagoya, Japan, representing the Parsian Team in the Small Size League.')">
+                    <img src="https://drive.google.com/thumbnail?id=198XGiTg3v6KBz99sZngHEjc7kL09dEMB&sz=w300"
+                        alt="RoboCup 2017 Nagoya, Japan">
+                    <p>RoboCup 2017 Nagoya, Japan</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1XpkTtoxFut4vfqZu5VJOcBp7MMsJyR2s&sz=w2000', 'Mobilistic\'18 Technology Festival', 'Exhibited at Mobilistic\'18 Technology Festival in Moscow.')">
+                    <img src="https://drive.google.com/thumbnail?id=1XpkTtoxFut4vfqZu5VJOcBp7MMsJyR2s&sz=w300"
+                        alt="Mobilistic'18 Technology Festival">
+                    <p>Mobilistic'18 Technology Festival</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1_BBdsRDsP1Xn9xkn0DqEfUju9Q6IRyWd&sz=w2000', 'FIRA Technical Committee (Factory)', 'Served as a Technical Committee member for the Factory category in the FIRA AutCup.')">
+                    <img src="https://drive.google.com/thumbnail?id=1_BBdsRDsP1Xn9xkn0DqEfUju9Q6IRyWd&sz=w300"
+                        alt="FIRA Technical Committee (Factory)">
+                    <p>FIRA Technical Committee (Factory)</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1eDZ2xaq1iX9aAO6tZ5fdc07vzsPhfMV0&sz=w2000', 'FIRA Technical Committee (Social)', 'Served as a Technical Committee member for the Social category in the FIRA AutCup.')">
+                    <img src="https://drive.google.com/thumbnail?id=1eDZ2xaq1iX9aAO6tZ5fdc07vzsPhfMV0&sz=w300"
+                        alt="FIRA Technical Committee (Social)">
+                    <p>FIRA Technical Committee (Social)</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1depbMQq5nCS4XUhj8AL6n_O3ArCC66dn&sz=w2000', 'RoboCup Iran Open 2018', 'Participation in RoboCup Iran Open 2018 as part of the Parsian Team in the Small Size League.')">
+                    <img src="https://drive.google.com/thumbnail?id=1depbMQq5nCS4XUhj8AL6n_O3ArCC66dn&sz=w300"
+                        alt="RoboCup Iran Open 2018">
+                    <p>RoboCup Iran Open 2018</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1dLR6NF2x6KDBiBaHx-ifQf2Z5KEskt2y&sz=w2000', 'RoboCup Iran Open 2017 (Participation)', 'Participation in RoboCup Iran Open 2017 as part of the Parsian Team in the Small Size League.')">
+                    <img src="https://drive.google.com/thumbnail?id=1dLR6NF2x6KDBiBaHx-ifQf2Z5KEskt2y&sz=w300"
+                        alt="RoboCup Iran Open 2017 Participation">
+                    <p>RoboCup Iran Open 2017 (Participation)</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1Jt8nqrcWkUOTDbDeZc_00ntPXXriiJtC&sz=w2000', 'RoboCup Iran Open 2016', 'Participation in RoboCup Iran Open 2016 as part of the Parsian Team in the Small Size League.')">
+                    <img src="https://drive.google.com/thumbnail?id=1Jt8nqrcWkUOTDbDeZc_00ntPXXriiJtC&sz=w300"
+                        alt="RoboCup Iran Open 2016">
+                    <p>RoboCup Iran Open 2016</p>
+                </div>
+                <div class="certificate-card"
+                    onclick="openModal('https://drive.google.com/thumbnail?id=1JQJy-Aj_-pKMcrhvB9we4e34BQe6qc5L&sz=w2000', 'Robotics Contest 2015', 'Participation in the International Robotics and AI Contest, MiroSot League with the Parsian Team.')">
+                    <img src="https://drive.google.com/thumbnail?id=1JQJy-Aj_-pKMcrhvB9we4e34BQe6qc5L&sz=w300"
+                        alt="Robotics Contest 2015">
+                    <p>Robotics Contest 2015</p>
+                </div>
+                <!-- <div class="certificate-card"
                 onclick="openModal('https://drive.google.com/thumbnail?id=1NplN8zIzTd2B2Q577E8Z_T8OfT8pNKmU&sz=w2000', 'IELTS Certificate 2024', 'Achieved an overall band score of 7.5 in IELTS, with strengths in Listening and Reading.')">
                 <img src="https://drive.google.com/thumbnail?id=1NplN8zIzTd2B2Q577E8Z_T8OfT8pNKmU&sz=300" alt="IELTS Certificate 2024">
                 <p>IELTS Certificate 2024</p>
             </div> -->
-        </div>
-
-    
-        <!-- Modal -->
-        <div id="certificateModal" class="modal2">
-            <span class="close2" onclick="closeModal()">&times;</span>
-            <div class="modal-content-wrapper">
-                <img id="modalImage" class="modal-content2">
-                <div id="modalCaption" class="modal-caption2"></div>
             </div>
-        </div>
-    </section>
+
+
+            <!-- Modal -->
+            <div id="certificateModal" class="modal2">
+                <span class="close2" onclick="closeModal()">&times;</span>
+                <div class="modal-content-wrapper">
+                    <img id="modalImage" class="modal-content2">
+                    <div id="modalCaption" class="modal-caption2"></div>
+                </div>
+            </div>
+        </section>
 
 
 
@@ -448,7 +621,8 @@
             <div class="info-module-content">
                 <i class="fas fa-info-circle show-module-ico"></i>
                 <p>For further information, go to my LinkedIn profile or contact me:</p>
-                <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" class="info-button linkedin-btn">
+                <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank"
+                    class="info-button linkedin-btn">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="mailto:m.najafqolian@tue.nl" class="info-button contact-btn">
@@ -459,19 +633,20 @@
                 </button>
             </div>
         </div>
-        </main>
+    </main>
     <footer>
         <div class="footer-content">
             <div class="contact">
                 <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
                         href="mailto:m.najafqolian@tue.nl">m.najafqolian@tue.nl</a></p>
-                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a
-                        href="tel:+31631318706">+31 6 31 31 87 06</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a href="tel:+31631318706">+31 6 31 31
+                        87 06</a></p>
                 <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
-                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My LinkedIn</a>
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
                 </p>
             </div>
-            <p class="copyright">&copy; 2024 Amin Najafqolian</p>
+            <p class="copyright">&copy; 2025 Amin Najafqolian</p>
         </div>
     </footer>
 
@@ -482,4 +657,5 @@
         }
     </script>
 </body>
+
 </html>

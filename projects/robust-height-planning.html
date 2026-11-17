@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A planner that certifies layer heights in additive manufacturing with zero or one inspection.">
+    <title>Robust Height Planning in Additive Manufacturing | Amin Najafqolian</title>
+    <link rel="icon" href="../test/ico.png" type="image/png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: calc(1vw + 0.1rem);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #007bff;
+        }
+
+        th,
+        td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        th {
+            text-align: center;
+            color: white;
+            border: 2px solid #0056b3;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" id="Linkedview">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
+        <h1>Robust Height Planning</h1>
+    </header>
+    <main>
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=1TPwjLEuiCM6UCdqKqdIJETWGllJMghxE&sz=w1500"
+                        alt="Flow from part specifications through the zero-or-one inspection planner to the lower-level deposition controller." width="1601" height="518"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1meVUZNn8-Ev_iRjAr14R3gkpmbkYnSTJ&sz=w1500"
+                        alt="Groove cross-section with the initial surface, deposited layers, intermediate height limits, and final tolerance." width="1601" height="994"
+                        class="carousel-item">
+                    
+                    <img src="https://drive.google.com/thumbnail?id=1bVxGKuVlSKu9LoM5On-oHAIpux907bOi&sz=w1500"
+                        alt="Inspection candidates, issued commands, and the worst-case height deviations for the 21-layer groove repair." width="1601" height="612"
+                        class="carousel-item">
+                </div>
+                <button class="carousel-control prev" type="button" aria-label="Previous image" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" type="button" aria-label="Next image" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    During additive manufacturing, small height errors can accumulate as each layer is added. Measuring
+                    the part can interrupt the build. This project asks whether the required heights can be guaranteed with
+                    <span class="highlight">zero inspection</span> and, when a measurement is needed, which layer is
+                    suitable.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The <span
+                    class="highlight">first diagram</span></a> shows the limits after each layer and the tolerance at
+                    the end of the repair. The planner takes these limits, the estimated starting height, and bounds on
+                    process and measurement errors. The <span class="highlight">planner diagram</span></a> shows how these inputs
+                    become an inspection plan and height increments for the deposition controller.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">How the planner works</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    Before deposition, the planner first tests whether a single sequence of commanded layer increments can
+                    keep the height inside its limits for every allowed error. The model includes uncertainty in the
+                    heights, deposition model, and layer-to-layer disturbances.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    If an inspection is needed, the planner tests candidate layers and amounts to deposit before
+                    inspection. It considers each range of possible sensor readings, including measurement error. Linear
+                    programming computes safe bounds for the remaining cumulative height increments. A backward check from
+                    the final layer confirms that these bounds can be reached using allowable layer increments. A plan is
+                    certified only if a safe completion exists for every reading range.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    During deposition, the actual reading selects the corresponding continuation. The planner can give the
+                    lower-level controller a range of safe increments for the next layer, leaving it room to meet other
+                    process objectives.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Results for a case study groove repair</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The numerical case study used an Inconel 625 groove and a final target height of 0.83 mm relative to the
+                    surrounding surface, with a tolerance of ±0.25 mm. The fixed setting commands the midpoint of the
+                    feasible range for the total height increment before inspection. The planner found the following options
+                    under the study’s uncertainty bounds.
+                </p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Planning choice</th>
+                            <th scope="col">Certified result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Zero inspections</td>
+                            <td>No feasible sequence</td>
+                        </tr>
+                        <tr>
+                            <td>One inspection with a fixed pre-inspection setting</td>
+                            <td>Five candidates, layers 11–15</td>
+                        </tr>
+                        <tr>
+                            <td>One inspection with a flexible pre-inspection setting</td>
+                            <td>Eight candidates, layers 10–17</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The <span
+                    class="highlight">case study plots</span></a> show an example that inspects after layer 14, leaving
+                    seven layers for correction. The left panel shows where inspection is feasible. The middle panel shows
+                    the allowable increments and the commands chosen for the median inspection reading. The right panel
+                    shows that the worst-case height band stays within the layerwise and final limits for the illustrated
+                    plan. It also shows the spread of 3,000 simulations.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The Python implementation computed a single inspection plan in about 0.8 seconds on the study processor.
+                    The window of certified layers gives a scheduler options when an inspection device or operator is shared
+                    across builds.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Manuscript</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    <em>Robust Height Planning in Additive Manufacturing with Zero or One Inspection</em> <br>- ECC 2027 conference manuscript. <a
+                    href="../index.html#publications" style="text-decoration: none;"><span class="highlight">Publications
+                    and manuscripts</span></a>
+                </p>
+            </div>
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.najafqolian@tue.nl">m.najafqolian@tue.nl</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a href="tel:+31631318706">+31 6 31 31
+                        87 06</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2025 Amin Najafqolian</p>
+        </div>
+    </footer>
+    <script src="project-carousel.js"></script>
+</body>
+
+</html>

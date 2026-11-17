@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A decision model for choosing how to recover a returned component and how far to restore it.">
+    <title>Strategic Returned Component Recovery | Amin Najafqolian</title>
+    <link rel="icon" href="../test/ico.png" type="image/png">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .highlight {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: calc(1vw + 0.1rem);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #007bff;
+        }
+
+        th,
+        td {
+            padding: 20px;
+            text-align: left;
+        }
+
+        th {
+            text-align: center;
+            color: white;
+            border: 2px solid #0056b3;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+
+<body style="margin-top: 0px;">
+    <header class="project-header">
+        <div class="container">
+            <h1>Amin Najafqolian</h1>
+            <p>Engineer | Researcher | Innovator</p>
+            <br>
+            <a href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank" id="Linkedview">Visit My LinkedIn</a>
+            <a href="../index.html" class="btn">Back to Home</a>
+        </div>
+        <h1>Returned Component Recovery</h1>
+    </header>
+    <main>
+        <section class="project-card">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://drive.google.com/thumbnail?id=1dw4z39pVzc9bJyi7tlgIlTm79dueM8Y_&sz=w1500"
+                        alt="Flowchart showing how route-specific target selection feeds the comparison of reuse, remanufacturing, and recycling." width="1442" height="771"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=15SmD-FU6pmhJS0Y08ecw5FhTaehXIV3m&sz=w1500"
+                        alt="Recovery strategy maps for low and high engineering difficulty, showing the best decision for each pair of incoming conditions." width="1681" height="980"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1gLMMaLtgpJNK5eIDXxWQadQfuT9g8AJO&sz=w1500"
+                        alt="recovery maps with targets" width="1442" height="771"
+                        class="carousel-item">
+                    
+                    <img src="https://drive.google.com/thumbnail?id=1x-hE5ii4Z1jc2aTqi_WRaBWS_nNpscXA&sz=w1500"
+                        alt="Mean net profit gains over six fixed rules under low and high engineering difficulty." width="1863" height="1023"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1r59QBtbtd2rCzw28OCG3VPB2hvkBgk6c&sz=w1500"
+                        alt="value model." width="1863" height="1023"
+                        class="carousel-item">
+                    <img src="https://drive.google.com/thumbnail?id=1ex5JZaBEIwnh91ETo1gwYlbPOBaMk4JL&sz=w1500"
+                        alt="Cost model." width="1863" height="1023"
+                        class="carousel-item">
+                </div>
+                <button class="carousel-control prev" type="button" aria-label="Previous image" onclick="moveCarousel(-1)">&#10094;</button>
+                <button class="carousel-control next" type="button" aria-label="Next image" onclick="moveCarousel(1)">&#10095;</button>
+            </div>
+            <div class="project-content" style="padding-left: 5%; padding-right: 5%;">
+                <h2 style="font-size: calc(1vw + 0.9rem);">Overview</h2>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    A returned component can be reused, remanufactured, or recycled. This project develops a decision model
+                    that selects the most profitable option for each component. When remanufacturing is preferred, it also
+                    selects the manufacturing route and the final condition to restore the component to.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">How the decision model works</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    Inspection describes the component on two scales from 0 to 1, where 1 matches the market benchmark.
+                    <span class="highlight">Functional service condition</span> measures how well it can perform its
+                    function. <span class="highlight">Marketable non-functional condition</span> measures attributes such as
+                    surface finish and appearance that affect whether it can be sold. The model also accounts for the
+                    component's geometric complexity and how difficult it is to reach the damaged area.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The decision diagram shows the three linked choices. First, the model finds the
+                    best restoration target for each route by subtracting the cost of reaching it from its estimated selling
+                    price. It then picks the better of additive manufacturing (AM) and conventional manufacturing (CM).
+                    Finally, it compares that result with direct reuse, when the part already meets release requirements,
+                    and recycling, which recovers the value of the material.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">What the model found</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The recovery maps show which option is most profitable for each pair of
+                    incoming conditions. With low engineering difficulty, CM covers most of the remanufacturing region. At
+                    higher difficulty, the areas favoring AM, reuse, and recycling grow. The model also finds cases where
+                    improving one condition, partially improving both, or restoring only to the release thresholds gives the
+                    highest profit. The maps were recalculated at reduced resolution using the manuscript's baseline
+                    parameters.
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Outputs</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    We analytically show that economically optimal remanufacturing need not fully restore a component to an as-new condition.  The preferred target state may involve minimum restoration or full restoration, but also improvement mainly in one condition or intermediate improvement in both conditions. This choice depends on how the recovered value and restoration cost change with the extent of restoration, as well as the component’s condition upon return, geometric complexity, and accessibility difficulty. 
+Through a numerical study, we show that direct reuse, remanufacturing, and recycling can each be optimal for components returned in different conditions. Remanufacturing using conventional manufacturing may work best when geometrical complexity and accessibility difficulty are low, while  remanufacturing using additive manufacturing becomes more attractive when these factors make the conventional route costly. Compared to fixed rules that preselect the recovery strategy (e.g. reusing components that meet minimum condition requirements and recycling the rest), the proposed model increases net profit by <span class="highlight">more than 25%</span> on average. Compared to the common practice of fully restoring components using conventional manufacturing, our model yields on average <span class="highlight"> over 11 times the net profit.</span></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Fixed rule</th>
+                            <th scope="col">Low difficulty</th>
+                            <th scope="col">High difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Recycle every return</td>
+                            <td>+33.36%</td>
+                            <td>+27.75%</td>
+                        </tr>
+                        <tr>
+                            <td>Reuse eligible returns and recycle the rest</td>
+                            <td>+15.40%</td>
+                            <td>+9.92%</td>
+                        </tr>
+                        <tr>
+                            <td>Fully restore using CM</td>
+                            <td>+134.33%</td>
+                            <td>+1,051.15%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    <span class="highlight">full conventional restoration lost money at 35.97% of the
+                    tested incoming states</span>. For states where that rule earned a positive profit, the model achieved
+                    about 11.5 times the rule's profit on average. The manuscript reports a mean absolute gain of 65.41
+                    normalized price units across all states for this comparison.
+                </p>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    The analytical rules reduced the average decision time for a single component from about 0.4 seconds to
+                    0.005 seconds on the study hardware. The full decision maps took about 19 minutes to generate with those
+                    rules, compared with about 12 hours using the direct search. <span class="highlight">80x faster decision making.</span>
+                </p>
+
+                <h3 style="font-size: calc(0.9vw + 0.5rem);">Manuscript</h3>
+
+                <p style="text-align: justify; font-size: calc(1vw + 0.1rem);">
+                    <em>Strategic returned component recovery: A decision model for reuse, remanufacturing, and
+                    recycling</em> <br>-
+                    <em>Production and Operations Management</em>. <a href="../index.html#publications"
+                    style="text-decoration: none;"><span class="highlight">Publications and manuscripts</span></a>
+                </p>
+            </div>
+            <a href="../index.html" class="btn back-btn">Back to Home</a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <span class="label">Email:</span> <a
+                        href="mailto:m.najafqolian@tue.nl">m.najafqolian@tue.nl</a></p>
+                <p><i class="fas fa-phone"></i> <span class="label">Phone:</span> <a href="tel:+31631318706">+31 6 31 31
+                        87 06</a></p>
+                <p><i class="fab fa-linkedin"></i> <span class="label">LinkedIn:</span> <a
+                        href="https://www.linkedin.com/in/mohamad-amin-najafqolian" target="_blank">Visit My
+                        LinkedIn</a>
+                </p>
+            </div>
+            <p class="copyright">&copy; 2025 Amin Najafqolian</p>
+        </div>
+    </footer>
+    <script src="project-carousel.js"></script>
+</body>
+
+</html>
